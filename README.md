@@ -1,6 +1,6 @@
 # Littlebox Strapi Stuite Docs
 
-This is the repository for the Littlebox Strapi Suite documentation. Visit [strapi.littlebox.pt](strapi.littlebox) for more information.
+This is the repository for the Littlebox Strapi Suite documentation. Visit [strapi.littlebox.pt](https://strapi.littlebox) for more information.
 
 ### Development
 
