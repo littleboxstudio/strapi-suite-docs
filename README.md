@@ -1,12 +1,6 @@
-# Mintlify Starter Kit
+# Littlebox Strapi Stuite Docs
 
-Click on `Use this template` to copy the Mintlify starter kit. The starter kit contains examples including
-
-- Guide pages
-- Navigation
-- Customizations
-- API Reference pages
-- Use of popular components
+This is the repository for the Littlebox Strapi Suite documentation. Visit [strapi.littlebox.pt](strapi.littlebox) for more information.
 
 ### Development
 
