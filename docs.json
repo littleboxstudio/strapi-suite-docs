@@ -1,55 +1,76 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Littlebox Strapi Suite",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#164ea3",
+    "light": "#0782c9",
+    "dark": "#154680"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Overview",
+        "pages": [
+          "before-starting",
+          "community-support",
+          "contributing",
+          "license",
+          "repositories"
+        ]
+      },
+      {
+        "tab": "Backend",
         "groups": [
           {
             "group": "Get Started",
             "pages": [
-              "introduction",
-              "quickstart",
-              "development"
+              "backend/introduction",
+              "backend/quickstart"
             ]
           },
           {
-            "group": "Essentials",
+            "group": "Guides",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
+              "backend/guides/menus",
+              "backend/guides/page-attributes",
+              "backend/guides/parameters",
+              "backend/guides/sitemap",
+              "backend/guides/slug",
+              "backend/guides/translations"
             ]
           }
         ]
       },
       {
-        "tab": "API Reference",
+        "tab": "Frontend",
         "groups": [
           {
-            "group": "API Documentation",
+            "group": "Get Started",
             "pages": [
-              "api-reference/introduction"
+              "frontend/introduction",
+              "frontend/quickstart"
             ]
           },
           {
-            "group": "Endpoint Examples",
+            "group": "Tutorial",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "frontend/your-first-app"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "frontend/guides/essentials",
+              "frontend/guides/attributes",
+              "frontend/guides/cache",
+              "frontend/guides/internationalization",
+              "frontend/guides/seo",
+              "frontend/guides/menu",
+              "frontend/guides/parameters",
+              "frontend/guides/slug",
+              "frontend/guides/templates"
             ]
           }
         ]
@@ -58,19 +79,9 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
+          "anchor": "See our solutions",
+          "href": "https://littlebox.pt",
           "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
         }
       ]
     }
@@ -80,23 +91,17 @@
     "dark": "/logo/dark.svg"
   },
   "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
+    "links": [],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Support",
+      "href": "mailto:tools@littlebox.pt"
     }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "github": "https://github.com/littleboxstudio",
+      "linkedin": "https://www.linkedin.com/company/littlebox-digital-society"
     }
   }
 }
