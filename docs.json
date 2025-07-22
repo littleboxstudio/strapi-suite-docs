@@ -36,6 +36,7 @@
               "backend/guides/menus",
               "backend/guides/page-attributes",
               "backend/guides/parameters",
+              "backend/guides/relations",
               "backend/guides/sitemap",
               "backend/guides/slug",
               "backend/guides/translations"
@@ -88,6 +89,11 @@
           "anchor": "See our solutions",
           "href": "https://littlebox.pt",
           "icon": "book-open-cover"
+        },
+        {
+          "anchor": "Who is behind this?",
+          "href": "https://www.linkedin.com/in/filipemoraes/",
+          "icon": "person"
         }
       ]
     }
@@ -97,7 +103,12 @@
     "dark": "/logo/dark.svg"
   },
   "navbar": {
-    "links": [],
+    "links": [
+      {
+        "label": "Donations",
+        "href": "https://buymeacoffee.com/filipemoraes"
+      }
+    ],
     "primary": {
       "type": "button",
       "label": "Support",
