@@ -27,7 +27,7 @@
             "group": "Get Started",
             "pages": [
               "backend/introduction",
-              "backend/quickstart"
+              "backend/installation"
             ]
           },
           {
@@ -73,6 +73,12 @@
               "frontend/guides/templates"
             ]
           }
+        ]
+      },
+      {
+        "tab": "Hosting",
+        "pages": [
+          "hosting/plans"
         ]
       }
     ],

@@ -1,0 +1,129 @@
+---
+title: Installation
+description: "Welcome to the Littlebox Strapi Suite documentation"
+---
+
+## Requirements
+
+The full installation requirements are identical to those of Strapi and can be found in the [Strapi Quick Start guide](https://docs.strapi.io/cms/quick-start).
+
+- Supported Strapi versions: 5.0.0 or later.
+
+## Installation
+
+
+### Install Strapi Suite
+Install the Littlebox Strapi Suite plugin in your Strapi project.
+<CodeGroup>
+```bash npm
+npm install @littlebox/strapi-suite --save
+```
+```bash yarn
+yarn add @littlebox/strapi-suite
+```
+</CodeGroup>
+
+### Install Strapi SEO
+The Littlebox Strapi Suite plugin requires Strapi’s official SEO plugin. Read the plugin [installation guide](https://www.npmjs.com/package/@strapi/plugin-seo) to install and configure it correctly.
+
+### Add required fields
+Add some extra fields for the Littlebox Strapi Suite plugin to work correctly.
+Read below to see which fields are mandatory.
+
+#### Slug and title
+You can access any document, whether it's part of a collection or a single type, through the API using its slug.
+The Littlebox Suite plugin adds slug-based search functionality, which is especially useful for building dynamic websites like blogs.
+Every document you want to expose to the frontend through the API must include the custom field `Littlebox Slug`, along with the `Title` field.
+Read more about [how the slug works](/backend/guides/slug).
+
+**Step 1**: Access the Strapi admin panel.\
+**Step 2**: Go to the "Content-Type Builder".\
+**Step 3**: Select the collection or single type that will be exposed to the frontend through the API.\
+**Step 4**: Click "Add another field to this component".\
+**Step 5**: Go to the "Custom" tab.\
+**Step 6**: Select the "Littlebox Slug" field.\
+**Step 7**: Fill in the following settings:
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/slug-add-component-step-1.png"
+/>
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/slug-add-component-step-2.png"
+/>
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/slug-add-component-step-3.png"
+/>
+
+**Step 8**: Click "Add another field to this component" again.\
+**Step 9**: Select the "Text" field.\
+**Step 10**: Fill in the following settings:
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/slug-add-component-step-4.png"
+/>
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/slug-add-component-step-5.png"
+/>
+
+#### Robots
+Robots meta tags play an important role in technical SEO. They give you precise control over how search engines handle each page on your site.
+However, these fields are only required when you use the [frontend](/frontend/introduction).
+
+To make the plugin work correctly, create the following custom fields:
+- `index` tells search engines to include the page in their index so it appears in search results.
+- `follow` tells bots to follow the links on the page and pass link authority ("link juice"). This is also the default behavior.
+- `nocache` asks Google and other search engines not to store a cached version of the page.
+- `noimageindex` useful when you don’t want images from the page to appear in image search results, while still allowing the rest of the page to be indexed and crawled.
+
+Follow these steps to create the fields. Make sure you [install the official Strapi SEO plugin](/backend/installation#install-strapi-seo) first.
+
+**Step 1**: Access the Strapi admin panel.\
+**Step 2**: Go to the "Content-Type Builder".\
+**Step 3**: In the list of components, click on "seo".\
+**Step 4**: Click "Add another field to this component".\
+**Step 5**: Select the "Component" field.\
+**Step 6**: Add the following settings:
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/robots-add-component-step-1.png"
+/>
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/robots-add-component-step-2.png"
+/>
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/robots-add-component-step-3.png"
+/>
+**Step 7**: A new component called "robots" appears in the field list.
+Click "Add another field to this component", which appears right below it.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/robots-add-component-step-4.png"
+/>
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/robots-add-component-step-5.png"
+/>
+
+**Step 8**: Repeat `step 7` for the fields "follow", "nocache", and "noimageindex".
+
+<CardGroup cols={2}>
+  <Card
+    title="Frontend"
+    icon="code"
+    href="/frontend/introduction"
+  >
+    Learn how our frontend streamlines integration with Strapi by automating repetitive tasks.
+  </Card>
+  <Card
+    title="Hosting"
+    icon="code"
+    href="/hosting/plans"
+  >
+    Explore our hosting solutions for staging and production environments.
+  </Card>
+</CardGroup>
