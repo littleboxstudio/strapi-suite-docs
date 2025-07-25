@@ -1,87 +1,137 @@
 ---
 title: 'Menus'
-description: 'Text, title, and styling in standard markdown'
+description: 'Learn how to create dynamic menus and connect them to the frontend using the API.'
 ---
 
-## Titles
+Menus is a module that lets you manage navigation menus through an intuitive drag-and-drop interface.
+It also provides a simple API for easy integration with the frontend.
 
-Best used for section headers.
+You can build the frontend however you like, but our [ready-to-use Next.js Frontend](/frontend/introduction) makes integration easier by handling repetitive tasks for you.
 
-```md
-## Titles
+### How to create a menu?
+
+**Step 1**: Access the Strapi admin panel.\
+**Step 2**: Go to the Littlebox Strapi Suite”.\
+**Step 3**: Select "Menu".\
+**Step 4**: Click "Create new entry".\
+**Step 5**: Set a title and a UID. The UID is used to fetch menu data through the [API](/backend/guides/menus#api).
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/backend-menu-step-1.png"
+/>
+**Step 6**: Add new items to the menu.\
+**Step 7**: Click the `::` icon to drag and reorder the items.\
+**Step 8**: To create nested items, click the `+` icon on an existing item.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/backend-menu-step-3.png"
+/>
+
+**Step 9**: Click the `edit` icon to view or edit the link properties. You can either set a custom URL or link to existing content using a defined slug. This is useful because if the content slug changes, the menu updates automatically. You can also define the link target:
+- `_blank` Opens the linked document in a new window or tab.
+- `_self`	Opens the linked document in the same frame as it was clicked.
+- `_parent`	Opens the linked document in the parent frame.
+- `_top` Opens the linked document in the full body of the window.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/backend-menu-step-2.png"
+/>
+
+**Step 10**: Each menu item includes metadata. You can use this metadata to build more dynamic and visually rich menus on the frontend, making it easier to manage everything in one place.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/backend-menu-step-4.png"
+/>
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/backend-menu-step-5.png"
+/>
+
+### API
+
+To get the data from the frontend, use your preferred HTTP client:
+```bash
+curl -X GET "/api/littlebox-strapi-suite/modules/menus?locale=<LOCALE>"
+```
+```json
+[
+    {
+        "id": 1,
+        "documentId": "rvycb4q234yqz47g1v69mzkm",
+        "title": "Header",
+        "uid": "header",
+        "locale": "en",
+        "createdAt": "2025-04-13T19:43:24.092Z",
+        "updatedAt": "2025-04-13T19:48:35.207Z",
+        "publishedAt": "2025-04-13T19:43:24.092Z",
+        "children": [
+            {
+                "id": 1,
+                "documentId": "k6phd1g4cf7ysqw527ok78d5",
+                "menuId": "rvycb4q234yqz47g1v69mzkm",
+                "parentId": null,
+                "title": "Experiences",
+                "url": "experiences",
+                "target": "_self",
+                "order": 1,
+                "metadata": {},
+                "createdAt": "2025-04-13T19:48:35.216Z",
+                "updatedAt": "2025-04-13T19:48:35.216Z",
+                "publishedAt": "2025-04-13T19:48:35.216Z",
+                "children": [
+                    {
+                        "id": 2,
+                        "documentId": "leb5vbdlthaw9uvbfo8njwsv",
+                        "menuId": "rvycb4q234yqz47g1v69mzkm",
+                        "parentId": "1",
+                        "title": "Dolphin Watching",
+                        "url": "experiences/dolphin-watching",
+                        "target": "_blank",
+                        "order": 1,
+                        "metadata": {},
+                        "createdAt": "2025-04-13T19:48:35.224Z",
+                        "updatedAt": "2025-04-13T19:48:35.224Z",
+                        "publishedAt": "2025-04-13T19:48:35.225Z",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "documentId": "zakerhh8fx912il34lxkj04f",
+                "menuId": "rvycb4q234yqz47g1v69mzkm",
+                "parentId": null,
+                "title": "Transfer",
+                "url": "transfer",
+                "target": "_self",
+                "order": 2,
+                "metadata": {},
+                "createdAt": "2025-04-13T19:48:35.234Z",
+                "updatedAt": "2025-04-13T19:48:35.234Z",
+                "publishedAt": "2025-04-13T19:48:35.234Z",
+                "children": []
+            }
+        ]
+    }
+]
 ```
 
-### Subtitles
-
-Best use to subsection headers.
-
-```md
-### Subtitles
-```
-
-<Tip>
-
-Each **title** and **subtitle** creates an anchor and also shows up on the table of contents on the right.
-
-</Tip>
-
-## Text Formatting
-
-We support most markdown formatting. Simply add `**`, `_`, or `~` around text to format it.
-
-| Style         | How to write it   | Result          |
-| ------------- | ----------------- | --------------- |
-| Bold          | `**bold**`        | **bold**        |
-| Italic        | `_italic_`        | _italic_        |
-| Strikethrough | `~strikethrough~` | ~strikethrough~ |
-
-You can combine these. For example, write `**_bold and italic_**` to get **_bold and italic_** text.
-
-You need to use HTML to write superscript and subscript text. That is, add `<sup>` or `<sub>` around your text.
-
-| Text Size   | How to write it          | Result                 |
-| ----------- | ------------------------ | ---------------------- |
-| Superscript | `<sup>superscript</sup>` | <sup>superscript</sup> |
-| Subscript   | `<sub>subscript</sub>`   | <sub>subscript</sub>   |
-
-## Linking to Pages
-
-You can add a link by wrapping text in `[]()`. You would write `[link to google](https://google.com)` to [link to google](https://google.com).
-
-Links to pages in your docs need to be root-relative. Basically, you should include the entire folder path. For example, `[link to text](/writing-content/text)` links to the page "Text" in our components section.
-
-Relative links like `[link to text](../text)` will open slower because we cannot optimize them as easily.
-
-## Blockquotes
-
-### Singleline
-
-To create a blockquote, add a `>` in front of a paragraph.
-
-> Dorothy followed her through many of the beautiful rooms in her castle.
-
-```md
-> Dorothy followed her through many of the beautiful rooms in her castle.
-```
-
-### Multiline
-
-> Dorothy followed her through many of the beautiful rooms in her castle.
->
-> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
-
-```md
-> Dorothy followed her through many of the beautiful rooms in her castle.
->
-> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
-```
-
-### LaTeX
-
-Mintlify supports [LaTeX](https://www.latex-project.org) through the Latex component.
-
-<Latex>8 x (vk x H1 - H2) = (0,1)</Latex>
-
-```md
-<Latex>8 x (vk x H1 - H2) = (0,1)</Latex>
-```
+<CardGroup cols={2}>
+  <Card
+    title="Frontend"
+    icon="code"
+    href="/frontend/introduction"
+  >
+    Learn how our frontend streamlines integration with Strapi by automating repetitive tasks.
+  </Card>
+  <Card
+    title="Hosting"
+    icon="code"
+    href="/hosting/plans"
+  >
+    Explore our hosting solutions for staging and production environments.
+  </Card>
+</CardGroup>
