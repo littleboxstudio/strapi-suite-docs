@@ -37,13 +37,34 @@ The document automatically inherits the parent’s slug and updates it whenever 
 This hierarchy can extend to three, four, or as many levels as needed. Simply select a parent for each document, as long as that parent also has its own parent.
 
 ### Template
-ok
+This is useful when used with our [Next.js frontend](/frontend/introduction).\
+This feature injects the document content directly into the template, making integration easier.
 
-### Priority
-ok
+**Step 1**: Access the Strapi admin panel.\
+**Step 2**: Go to the "Littlebox Strapi Suite".\
+**Step 3**: Select "Template".\
+**Step 4**: Click "Create new entry".\
+**Step 5**: Set a name and a UID. The UUID is used to locate the `.jsx` or `.tsx` file where the data will be injected.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/backend-page-attributes-step-3.png"
+/>
 
-### Change frequency
-ok
+**Step 6**: Go to the "Content Manager".\
+**Step 7**: Create a new collection or a single type. Check the [requirements](/backend/installation#add-required-fields) before creating a new document.\
+**Step 8**: Select the template created in `step 5` and save it.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/backend-page-attributes-step-4.png"
+/>
+
+For more information on how to retrieve data in the template, read the [template documentation](/frontend/guides/templates) in the frontend section.
+
+### Priority and change frequency
+In SEO, especially in XML sitemaps, the tags priority and changefreq (change frequency) are used to inform search engines about the relative importance of each page and how often the content is likely to change.
+Although these tags don't guarantee that Google or other search engines will follow the suggestions exactly, they still provide helpful guidance.
+
+For more information, read the [sitemap documentation](/frontend/guides/seo#sitemap) in the frontend section.
 
 ### API
 To get the data from the frontend, use your preferred HTTP client:
