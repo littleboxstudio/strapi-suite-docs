@@ -1,87 +1,87 @@
 ---
 title: 'Page Attributes'
-description: 'Text, title, and styling in standard markdown'
+description: 'Learn how to use a page`s attributes.'
 ---
 
-## Titles
+Any document can be treated as a page once a slug is assigned.
+This makes it possible to define properties that support frontend integration, such as setting a parent document and 
+inheriting its [slug](/backend/guides/slug) to create a hierarchical URL.
 
-Best used for section headers.
+### Parent
+It’s useful when defining a page hierarchy, where the child automatically inherits the parent’s slug. This creates a clean, SEO-friendly URL.
 
-```md
-## Titles
+For example, in an application with a news listing page at `/news`, clicking on a news item opens a detail page with a URL based on the parent page.
+In this case, the URL combines the parent slug `/news` with the news title, such as "Littlebox Suite helped me build websites faster", resulting in a final URL like `/news/littlebox-suite-helped-me-build-websites-faster`.
+
+**Step 1**: Access the Strapi admin panel.\
+**Step 2**: Go to the "Content-Type Builder".\
+**Step 3**: Create a new single type called `news`.\
+**Step 4**: Add the [slug](/backend/guides/slug) custom field and title field.\
+**Step 5**: Create a new collection type called `news`.\
+**Step 6**: Add the custom [slug](/backend/guides/slug) field and title field.\
+**Step 7**: Go to the "Content Manager".\
+**Step 8**: Create a new entry in the single type with the title "News".
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/backend-page-attributes-step-1.png"
+/>
+
+**Step 9**: Create a new entry in the collection type with the title "Littlebox Suite helped me build websites faster".\
+**Step 10**: In the left panel, under the Page Attributes section, set the parent to News.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/backend-page-attributes-step-2.png"
+/>
+
+The document automatically inherits the parent’s slug and updates it whenever the parent’s slug changes.
+This hierarchy can extend to three, four, or as many levels as needed. Simply select a parent for each document, as long as that parent also has its own parent.
+
+### Template
+ok
+
+### Priority
+ok
+
+### Change frequency
+ok
+
+### API
+To get the data from the frontend, use your preferred HTTP client:
+```bash
+curl -X GET "/api/littlebox-strapi-suite/modules/pages?slug=<SLUG>&properties=attributes"
 ```
-
-### Subtitles
-
-Best use to subsection headers.
-
-```md
-### Subtitles
-```
-
-<Tip>
-
-Each **title** and **subtitle** creates an anchor and also shows up on the table of contents on the right.
-
-</Tip>
-
-## Text Formatting
-
-We support most markdown formatting. Simply add `**`, `_`, or `~` around text to format it.
-
-| Style         | How to write it   | Result          |
-| ------------- | ----------------- | --------------- |
-| Bold          | `**bold**`        | **bold**        |
-| Italic        | `_italic_`        | _italic_        |
-| Strikethrough | `~strikethrough~` | ~strikethrough~ |
-
-You can combine these. For example, write `**_bold and italic_**` to get **_bold and italic_** text.
-
-You need to use HTML to write superscript and subscript text. That is, add `<sup>` or `<sub>` around your text.
-
-| Text Size   | How to write it          | Result                 |
-| ----------- | ------------------------ | ---------------------- |
-| Superscript | `<sup>superscript</sup>` | <sup>superscript</sup> |
-| Subscript   | `<sub>subscript</sub>`   | <sub>subscript</sub>   |
-
-## Linking to Pages
-
-You can add a link by wrapping text in `[]()`. You would write `[link to google](https://google.com)` to [link to google](https://google.com).
-
-Links to pages in your docs need to be root-relative. Basically, you should include the entire folder path. For example, `[link to text](/writing-content/text)` links to the page "Text" in our components section.
-
-Relative links like `[link to text](../text)` will open slower because we cannot optimize them as easily.
-
-## Blockquotes
-
-### Singleline
-
-To create a blockquote, add a `>` in front of a paragraph.
-
-> Dorothy followed her through many of the beautiful rooms in her castle.
-
-```md
-> Dorothy followed her through many of the beautiful rooms in her castle.
-```
-
-### Multiline
-
-> Dorothy followed her through many of the beautiful rooms in her castle.
->
-> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
-
-```md
-> Dorothy followed her through many of the beautiful rooms in her castle.
->
-> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
-```
-
-### LaTeX
-
-Mintlify supports [LaTeX](https://www.latex-project.org) through the Latex component.
-
-<Latex>8 x (vk x H1 - H2) = (0,1)</Latex>
-
-```md
-<Latex>8 x (vk x H1 - H2) = (0,1)</Latex>
+```json
+{
+    "document": {
+        "id": 26,
+        "documentId": "i111r5p3pa73r6tm71b7lh86",
+        "title": "Littlebox Suite helped me build websites faster",
+        "slug": "news/littlebox-suite-helped-me-build-websites-faster",
+        "createdAt": "2025-04-13T21:32:18.148Z",
+        "updatedAt": "2025-04-13T21:50:12.142Z",
+        "publishedAt": "2025-04-13T21:50:12.161Z",
+        "locale": "en",
+        "localizations": [
+            {
+                "id": 27,
+                "documentId": "i111r5p3pa73r6tm71b7lh86",
+                "title": "Littlebox Suite ajudou-me a construir sites mais rápido",
+                "slug": "pt/noticias/littlebox-suite-ajudou-me-a-construir-sites-mais-rapido",
+                "createdAt": "2025-04-13T21:37:55.693Z",
+                "updatedAt": "2025-04-13T22:05:35.160Z",
+                "publishedAt": "2025-04-13T22:05:35.185Z",
+                "locale": "pt"
+            }
+        ]
+    },
+    "attributes": {
+        "template": "default",
+        "priority": "0.5",
+        "frequency": "never",
+        "parent": {
+            "id": "wnzxub0s3ghckznjdkshgcw7",
+            "model": "api::page.page"
+        }
+    }
+}
 ```
