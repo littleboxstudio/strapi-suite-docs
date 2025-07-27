@@ -7,7 +7,7 @@ Any document can be treated as a page once a slug is assigned.
 This makes it possible to define properties that support frontend integration, such as setting a parent document and 
 inheriting its [slug](/backend/guides/slug) to create a hierarchical URL.
 
-### Parent
+## Parent
 It’s useful when defining a page hierarchy, where the child automatically inherits the parent’s slug. This creates a clean, SEO-friendly URL.
 
 For example, in an application with a news listing page at `/news`, clicking on a news item opens a detail page with a URL based on the parent page.
@@ -36,7 +36,7 @@ In this case, the URL combines the parent slug `/news` with the news title, such
 The document automatically inherits the parent’s slug and updates it whenever the parent’s slug changes.
 This hierarchy can extend to three, four, or as many levels as needed. Simply select a parent for each document, as long as that parent also has its own parent.
 
-### Template
+## Template
 This is useful when used with our [Next.js frontend](/frontend/introduction).\
 This feature injects the document content directly into the template, making integration easier.
 
@@ -60,13 +60,13 @@ This feature injects the document content directly into the template, making int
 
 For more information on how to retrieve data in the template, read the [template documentation](/frontend/guides/templates) in the frontend section.
 
-### Priority and change frequency
+## Priority and change frequency
 In SEO, especially in XML sitemaps, the tags priority and changefreq (change frequency) are used to inform search engines about the relative importance of each page and how often the content is likely to change.
 Although these tags don't guarantee that Google or other search engines will follow the suggestions exactly, they still provide helpful guidance.
 
 For more information, read the [sitemap documentation](/frontend/guides/seo#sitemap) in the frontend section.
 
-### API
+## API
 To get the data from the frontend, use your preferred HTTP client:
 ```bash
 curl -X GET "/api/littlebox-strapi-suite/modules/pages?slug=<SLUG>&properties=attributes"
