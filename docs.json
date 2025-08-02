@@ -50,7 +50,7 @@
             "group": "Get Started",
             "pages": [
               "frontend/introduction",
-              "frontend/quickstart"
+              "frontend/installation"
             ]
           },
           {
