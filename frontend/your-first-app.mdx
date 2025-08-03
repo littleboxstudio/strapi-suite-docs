@@ -1,33 +1,72 @@
 ---
 title: 'Your First App'
-description: 'Example section for showcasing API endpoints'
+description: 'Learn how to build a complete application using the Littlebox Strapi Suite Plugin and the Littlebox Strapi Suite Frontend'
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+## Prerequisites
+Before starting the tutorial, make sure to follow these steps:
+1. Littlebox Strapi Suite Plugin: have the plugin installed and configured as described in the [backend documentation](/backend/installation).
+2. Littlebox Strapi Suite Frontend: have the frontend installed and configured as described in the [frontend documentation](/frontend/installation).
 
-## Welcome
+## Tutorial
+### Introduction
+In this tutorial, you build your own app integrated with Strapi.
+This is a great way to experience a typical development workflow while learning key concepts, tools, and terminology 
+used when building apps with Next.js and Strapi.
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+Strapi lets you build different data structures based on your project’s needs. For demonstration purposes, 
+you’ll create a collection type called `Pages`, where fields like `title`, `slug`, and `seo` are shared across all documents 
+in that collection. Each section within a page will be a component that you can add or remove depending on the specific 
+content of each page. 
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+You can also create each page as a single type, depending on how you want to organize your data. 
+However, for this tutorial and better understanding, we recommend following our approach. 
 
-## Authentication
+Any document can be treated as a page, as long as it includes the following specifications:
+- The fields `title`, `slug`, and `seo` properly configured.
+- The template where the document data will be injected.
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+### 1. Set up the homepage
+Access the Strapi admin panel at `http://localhost:1337` (this may vary depending on your local setup). Go to the `Content-Type Builder` 
+and create a new collection called `Pages` as shown in the image below.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/tutorial-1.png"
+/>
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
+In the `Advanced Settings` tab, also enable `Internationalization`, we’ll cover this topic in more detail later.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/tutorial-2.png"
+/>
+
+### 2. Integrate fields into the template
+
+### 3. Create new templates
+
+### 4. Create menus
+
+### 5. Inject content into the template
+
+### 6. Internationalization
+
+### 7. Parameters
+
+### 8. SEO
+
+<CardGroup cols={2}>
+  <Card
+    title="Backend"
+    icon="code"
+    href="/backend/introduction"
+  >
+    Learn how to install the plugin and use the endpoints for better integration with the frontend.
+  </Card>
+  <Card
+    title="Hosting"
+    icon="code"
+    href="/hosting/plans"
+  >
+    Explore our hosting solutions for staging and production environments.
+  </Card>
+</CardGroup>
