@@ -40,6 +40,38 @@ In the `Advanced Settings` tab, also enable `Internationalization`, we’ll cove
   src="https://statics.littlebox.pt/strapi-suite/tutorial-2.png"
 />
 
+Go to the `Content Manager`, click on `Pages` under `Collection Types`, then click on `Create new entry`. 
+Enter the title. Notice that the slug field fills in automatically. However, this won’t be the slug for the 
+homepage, we’ll update this setting later in the tutorial. In the right-hand sidebar, under the `Page Attributes` section, 
+select the `default` template.
+
+After you fill in the fields, click `Save`, then click `Publish`.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/tutorial-3.png"
+/>
+
+In the left sidebar, go to `Littlebox Strapi Suite`, then click `Settings` under the `Slug` section. At the top right of the 
+page, click `Settings` again. In the `HOME PAGE` field, select the document you created in the previous step. 
+In the `HOME PAGE SLUG STRATEGY` field, choose the `Language` option. Read the [documentation](/backend/guides/slug) 
+for a better understanding of the selected options.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/tutorial-4.png"
+/>
+
+Notice that a `HOMEPAGE` tag appears next to the selected document. This indicates that the document has been set as the homepage.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/tutorial-5.png"
+/>
+
+Run `npm run dev` to start the development server. Visit `http://localhost:3000` to view your application.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="https://statics.littlebox.pt/strapi-suite/tutorial-6.png"
+/>
+
 ### 2. Integrate fields into the template
 
 ### 3. Create new templates
