@@ -31,13 +31,13 @@ Access the Strapi admin panel at `http://localhost:1337` (this may vary dependin
 and create a new collection called `Pages` as shown in the image below.
 <img
   style={{ borderRadius: '0.5rem' }}
-  src="https://statics.littlebox.pt/strapi-suite/tutorial-1.png"
+  src="/images/tutorial-1.png"
 />
 
 In the `Advanced Settings` tab, also enable `Internationalization`, we’ll cover this topic in more detail later.
 <img
   style={{ borderRadius: '0.5rem' }}
-  src="https://statics.littlebox.pt/strapi-suite/tutorial-2.png"
+  src="/images/tutorial-2.png"
 />
 
 Go to the `Content Manager`, click on `Pages` under `Collection Types`, then click on `Create new entry`. 
@@ -48,7 +48,7 @@ select the `default` template.
 After you fill in the fields, click `Save`, then click `Publish`.
 <img
   style={{ borderRadius: '0.5rem' }}
-  src="https://statics.littlebox.pt/strapi-suite/tutorial-3.png"
+  src="/images/tutorial-3.png"
 />
 
 In the left sidebar, go to `Littlebox Strapi Suite`, then click `Settings` under the `Slug` section. At the top right of the 
@@ -57,34 +57,230 @@ In the `HOME PAGE SLUG STRATEGY` field, choose the `Language` option. Read the [
 for a better understanding of the selected options.
 <img
   style={{ borderRadius: '0.5rem' }}
-  src="https://statics.littlebox.pt/strapi-suite/tutorial-4.png"
+  src="/images/tutorial-4.png"
 />
 
 Notice that a `HOMEPAGE` tag appears next to the selected document. This indicates that the document has been set as the homepage.
 <img
   style={{ borderRadius: '0.5rem' }}
-  src="https://statics.littlebox.pt/strapi-suite/tutorial-5.png"
+  src="/images/tutorial-5.png"
 />
 
 Run `npm run dev` to start the development server. Visit `http://localhost:3000` to view your application.
 <img
   style={{ borderRadius: '0.5rem' }}
-  src="https://statics.littlebox.pt/strapi-suite/tutorial-6.png"
+  src="/images/tutorial-6.png"
 />
 
 ### 2. Integrate fields into the template
+All fields added to the document are injected into the template through the `page` property. 
+For better understanding, open the file `src/templates/default/index.tsx`, which corresponds to the template selected in the previous step. 
+Notice that the `page` property is injected into the template, containing all the properties of the document.
+<CodeGroup>
+```javascript index.tsx
+interface Props {
+  page: Page;
+}
 
-### 3. Create new templates
+export default function Default({ page }: Props) {
+  //...
+}
+```
+```typescript types.ts
+export interface Page {
+  document: {
+    id: number;
+    documentId: string;
+    title: string;
+    slug: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    locale: string;
+    [key: string]: unknown;
+    localizations: PageLocalization[];
+    seo: PageSeo;
+    breadcrumbs: PageBreadcrumbs[];
+  };
+  attributes: {
+    template: string;
+    priority: string;
+    frequency: string;
+    parent?: {
+      id: string;
+      model: string;
+    };
+  };
+}
+```
+</CodeGroup>
 
-### 4. Create menus
+**Step 1**: Access the Strapi admin panel.\
+**Step 2**: Go to the <i>Content-Type Builder -> Pages</i>.\
+**Step 3**: Click "Add another field to this collection type".\
+**Step 4**: Select the `Rich text (Markdown)` type.\
+**Step 5**: Enter "description" as the name.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/tutorial-7.png"
+/>
+**Step 6**: In the `Advanced settings` tab, check `Required field` and `Enable localization for this field`.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/tutorial-8.png"
+/>
+**Step 7**: Click in "Finish" and "Save".
 
-### 5. Inject content into the template
+<Tip>
+ You can adjust the view to better display the fields. Check the official [Strapi documentation](https://docs.strapi.io/cms/features/content-manager#edit-view-settings) for more details.
+</Tip>
 
-### 6. Internationalization
+**Step 8**: Go to the <i>Content Manage</i> and edit the home page.\
+**Step 9**: Enter "Littlebox Suite helped me build websites faster." in the `description` field.\
+**Step 10**: Click "Save", then "Publish".\
+**Step 11**: Open the default template located in the `src/templates/default/index.tsx` folder.\
+**Step 12**: Replace the current text with the following code:
+<CodeGroup>
+```tsx After
+<p className="pt-[20px] max-w-[650px] text-center text-[#b5b5b5]">
+  {page.document.description}
+</p>
 
-### 7. Parameters
+```
+```tsx Before
+<p className="pt-[20px] max-w-[650px] text-center text-[#b5b5b5]">
+  This is a solution for quick and easy integration with the Strapi + Littlebox Suite plugin.
+  <br />
+  Feel free to make any necessary modifications, but we recommend reviewing the documentation for a better
+  understanding of our approach.
+  <br />
+  Enjoy! :)
+</p>
+```
+```json Page object
+{
+    "document": {
+        "id": 4,
+        "documentId": "k5m5omxnuhvkt4b2qha0ljp4",
+        "title": "Homepage",
+        "slug": "",
+        "createdAt": "2025-10-21T17:35:03.583Z",
+        "updatedAt": "2025-10-21T19:52:39.574Z",
+        "publishedAt": "2025-10-21T19:52:39.627Z",
+        "locale": "en",
+        "description": "Littlebox Suite helped me build websites faster.",
+        "localizations": [],
+        "breadcrumbs": [
+            {
+                "position": 1,
+                "name": "Homepage",
+                "item": ""
+            }
+        ]
+    },
+    "attributes": {
+        "template": "default",
+        "priority": "0.5",
+        "frequency": "weekly"
+    }
+}
+```
+</CodeGroup>
 
-### 8. SEO
+Visit `http://localhost:3000` to view the result.\
+For more information on how to retrieve data in the template, read the [template documentation](/frontend/guides/templates) section.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/tutorial-9.png"
+/>
+
+### 3. Create components and dynamic zones
+The approach in the previous step was meant to show the easiest way to edit content on the frontend from the admin panel.
+However, when you create new pages, the defined fields are the same for all of them. This is not a good practice, since the 
+data architecture is defined at the collection level, not at the page level. To solve this issue, a good practice is 
+to use components and dynamic zones.
+
+For more information on components and dynamic zones, visit the official [Strapi documentation](https://docs.strapi.io/cms/features/content-type-builder#components).
+
+**Step 1**: Access the Strapi admin panel.\
+**Step 2**: Go to the <i>Content-Type Builder -> Pages</i>.\
+**Step 3**: Delete the `description` field and click "Save".\
+**Step 4**: In the sidebar menu, click "Create new component".\
+**Step 5**: In the `Basic settings` tab, fill in the following values and click "Continue".
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/tutorial-12.png"
+/>
+**Step 6**: Select `Rich text (Markdown)`.\
+**Step 7**: In the `Basic settings` tab, fill in the following values and click "Finish".
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/tutorial-13.png"
+/>
+**Step 8**: Click "Save".\
+**Step 9**: Still in the <i>Content-Type Builder</i>, click "Pages" under the `Collection Types` section.\
+**Step 10**: Click "Add another field to this collection type".\
+**Step 11**: Select `Dynamic zone`, fill in the following values, and click "Add components to the zone".
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/tutorial-14.png"
+/>
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/tutorial-15.png"
+/>
+**Step 12**: Choose `Use an existing component`, select the `text` component, then click "Finish" and "Save".
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/tutorial-16.png"
+/>
+**Step 13**: Go to the <i>Content Manager</i> and edit the home page.\
+**Step 14**: Click "Add component to components" and select the `Text` component.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/tutorial-17.png"
+/>
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/tutorial-18.png"
+/>
+**Step 15**: Enter "Littlebox Suite helped me build websites faster." and click "Save", then "Publish".
+
+<Tip>
+This approach allows pages to be modular and reuse components as needed - for example, a slider that is used across 
+different templates.
+</Tip>
+
+### 4. Create new templates
+For better understanding, this section uses a news system as an example, with one page for the news list and another for the news details.
+The first step is to create the necessary templates for this system, both in the Strapi admin panel and on the frontend.
+
+**Step 1**: Access the Strapi admin panel.\
+**Step 2**: Go to the "Littlebox Strapi Suite".\
+**Step 3**: Select "Template".\
+**Step 4**: Click "Create new entry".
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/tutorial-10.png"
+/>
+**Step 5**: Do the same for the news detail template.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/tutorial-11.png"
+/>
+**Step 6**: Go to the "Content Manager" and click "Create new entry".\
+**Step 7**: 
+
+### 5. Create menus and navigation
+
+### 6. Inject content into the template
+
+### 7. Internationalization
+
+### 8. Parameters
+
+### 9. SEO
 
 <CardGroup cols={2}>
   <Card
