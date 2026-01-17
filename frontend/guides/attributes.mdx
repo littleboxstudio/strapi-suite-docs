@@ -1,8 +1,35 @@
 ---
-title: 'Attributes'
-description: 'Sectiontion under development. It will be completed soon'
+title: "Attributes"
+description: "Learn how to use attributes to configure your pages."
 ---
 
-<Note>
-  Section under development. It will be completed soon.
-</Note>
+Attributes allow you to configure how the frontend renders your pages. They act as a bridge between your Strapi content and the frontend application.
+
+## Template
+
+The template attribute determines which React component renders your page content. When you select a template in Strapi, the frontend dynamically imports the corresponding component.
+
+Open the file `frontend/src/app/(pages)/[...slug]/page.tsx` to see this in action:
+
+```typescript
+const content = await import(`../../templates/${page.attributes.template}/content.ts`);
+const strategy = content.default;
+await strategy(page);
+
+const Template = dynamic<TemplateProps>(() =>
+  import(`../../templates/${page.attributes.template}`).then((mod) => mod.default),
+);
+```
+
+To create a new layout, add a new folder in `frontend/src/app/templates/` matching the template name you defined in Strapi.
+
+## Parent
+
+The parent attribute establishes a hierarchy for your content. This structure directly affects two key areas of your frontend:
+
+1. **URL Structure**: Child pages inherit the parent's slug, creating nested URLs (e.g., `/services/web-design`).
+2. **Breadcrumbs**: The `BaseBreadcrumbJsonLd` component uses this hierarchy to generate structured data for search engines, helping them understand your site structure.
+
+## SEO Attributes
+
+The `priority` and `change frequency` attributes help search engines strictly for sitemap generation. Ideally, you set these to guide crawlers on how often to visit your pages and how important they are relative to one another.
