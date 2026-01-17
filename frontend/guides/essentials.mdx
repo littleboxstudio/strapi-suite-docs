@@ -93,10 +93,15 @@ import { Page } from "@/app/core/types";
 export default async function (page: Page): Promise<void> {
   // Inject custom property into the page object
   page.document.custom = "custom property value";
+
+  // Fetch external data and inject it
+  const response = await fetch("https://api.example.com/data");
+  const data = await response.json();
+  page.document.externalData = data;
 }
 ```
 
-## Configuration & i18n
+## Internationalization
 
 ### `middleware.ts`
 
@@ -104,7 +109,13 @@ This file connects your Next.js application to the Strapi backend to validate lo
 
 ### `i18n` Folder
 
-The `i18n` directory configures the `next-intl` library. It handles the request scope and fetches the translation strings directly from Strapi, ensuring your site text is always up-to-date with the CMS.
+The `i18n` directory configures the `next-intl` library. It handles the request scope and fetches the translation strings directly from Strapi.
+
+**What are "Translations"?**
+
+These translations are standalone strings that do not belong to any specific document (page) context. They are typically used for static UI elements like buttons ("Book now"), labels ("About us"), or error messages. By fetching them from the backend, you ensure these strings can be managed via the CMS without requiring code deployments for text changes.
+
+For more details on how these are managed in the backend, refer to the [Translations](/backend/guides/translations) guide.
 
 ## Project vs. Framework
 
