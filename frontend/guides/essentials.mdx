@@ -1,8 +1,116 @@
 ---
-title: 'Essentials'
-description: 'Section under development. It will be completed soon'
+title: "Essentials"
+description: "Understand the core structure and essential files of the frontend framework."
 ---
 
-<Note>
-  Section under development. It will be completed soon.
-</Note>
+This guide covers the essential files and directories of the frontend framework. It explains the purpose of each component and differentiates between the framework core and your project-specific implementations.
+
+## Core Directory
+
+The `app/core` folder is the heart of the framework. You generally do not need to touch these files unless you are modifying the framework itself.
+
+### `types.ts`
+
+Located in `app/core/types.ts`, this file handles all the TypeScript interfaces that map to the Strapi data models. It defines the structure for Pages, Menus, and other core data types used throughout the application.
+
+### `components`
+
+The `app/core/components` directory contains the base React components that drive the application, such as the Base Layout, Base Template, and JSON-LD components. These ensure consistent rendering and SEO structure across your site.
+
+### `contexts`
+
+The `app/core/contexts` directory provides the React Contexts that manage global state. This includes:
+
+- **Locale**: Manages the current language and routing.
+- **Menu**: Handles the navigation data fetched from Strapi.
+- **Parameters**: Stores global configuration settings.
+
+### `lib`
+
+The `app/core/lib` folder contains utility functions, most notably the `metaDataGenerator`, which standardizes how SEO metadata is constructed from Strapi data.
+
+## Root Application Files
+
+These files sit at the root of the `app` directory and serve as the entry points for your application.
+
+### `layout.tsx`
+
+This is your root layout file. It wraps your entire application with necessary providers (Locale, Menu, Parameters, NextIntl) and handles font loading (`Inter` and `Ovtreasure`).
+**Note**: While this is a framework file, you modify it to add custom providers, change fonts, or update favicons.
+
+### `page.tsx`
+
+This file acts as the main entry point for the homepage. It fetches the initial data and dynamically determines which template to render based on the `model` attribute from Strapi. It also executes the `content.ts` injection strategy if one exists for the active template.
+
+### `global.scss`
+
+Located at `app/globals.scss`, this file holds the global styles. It is part of the framework structure, but you use it to import your project's custom SCSS or define global CSS rules.
+
+### `not-found.tsx`
+
+This file handles 404 errors. The framework provides the structure, but you implement the specific UI (images, text, layout) to match your project's design.
+
+### SEO Files
+
+- **`robots.ts`**: Automatically generates the `robots.txt` file based on environment variables.
+- **`sitemap.ts`**: Automatically generates the `sitemap.xml` by fetching all valid pages from Strapi and mapping their localized URLs.
+
+## Dynamic Routing
+
+The framework handles routing dynamically through the `app/(pages)` directory.
+
+### `[...slug]/page.tsx`
+
+Located in `app/(pages)/[...slug]/page.tsx`, this file catches all routes that are not the homepage.
+
+- **Functionality**: It uses the URL slug to fetch the corresponding page data from Strapi and renders the appropriate template.
+- **Customization**: Although this is a framework file, it serves as a key integration point. You can modify it to add global components that should appear on all inner pages, such as specific headers, floating action buttons, or other layout elements that are independent of the chosen template.
+
+## Templates System
+
+The framework uses a dynamic template system located in `app/templates`.
+
+### Default Template
+
+The `app/templates/default` folder is the only template included with the framework core.
+
+- **`index.tsx`**: The main component that iterates over the blocks defined in Strapi and renders the corresponding React components.
+
+### Content Injection (`content.ts`)
+
+You can inject custom data into a template using a `content.ts` file. This file usually resides in your template folder (e.g., `app/templates/default/content.ts`).
+
+The `content.ts` export allows you to:
+
+1.  **Modify the Page Object**: You can use this function to modify the page object and inject custom data. For example, or you can add a custom property to the page object, or change the existing ones, etc.
+2.  **Fetch External Data**: It's possible to use this function to fetch data from external sources and inject it into the page object.
+
+Example usage in `content.ts`:
+
+```typescript
+import { Page } from "@/app/core/types";
+
+export default async function (page: Page): Promise<void> {
+  // Inject custom property into the page object
+  page.document.custom = "custom property value";
+}
+```
+
+## Configuration & i18n
+
+### `middleware.ts`
+
+This file connects your Next.js application to the Strapi backend to validate locales. It checks the URL path, verifies if the requested locale exists in Strapi, and manages the routing and cookie setting for internationalization.
+
+### `i18n` Folder
+
+The `i18n` directory configures the `next-intl` library. It handles the request scope and fetches the translation strings directly from Strapi, ensuring your site text is always up-to-date with the CMS.
+
+## Project vs. Framework
+
+While the folder structure is provided by the framework, the contents of the following directories are usually 100% your project's implementation:
+
+- **`app/api`**: Create your custom API endpoints.
+- **`app/components`**: Build your project-specific UI components.
+- **`app/context`**: Create custom React contexts for your application's specific needs.
+- **`app/assets`**: Store your static assets (images, fonts, etc.).
