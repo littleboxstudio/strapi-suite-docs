@@ -54,12 +54,6 @@
             ]
           },
           {
-            "group": "Tutorial",
-            "pages": [
-              "frontend/your-first-app"
-            ]
-          },
-          {
             "group": "Guides",
             "pages": [
               "frontend/guides/essentials",
