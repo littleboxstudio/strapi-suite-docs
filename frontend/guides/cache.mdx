@@ -1,8 +1,107 @@
 ---
-title: 'Cache'
-description: 'Section under development. It will be completed soon'
+title: "Caching Strategies"
+description: "Learn how the framework uses caching to optimize performance."
 ---
 
-<Note>
-  Section under development. It will be completed soon.
-</Note>
+## Overview
+
+The framework employs a robust caching strategy to ensure fast load times and reduce server load. It automatically minimizes network requests and optimizes content delivery by leveraging Next.js caching mechanisms.
+
+The caching system operates on three levels:
+
+1. **Request Memoization**: Deduplicates requests within the same render pass.
+2. **Data Cache**: Caches the results of fetch requests across requests.
+3. **Full Route Cache**: Stores the rendered HTML and React Server Component payload at build time.
+
+## Request Memoization
+
+The framework uses the `cache` function from React to memoize data fetching functions. This internal mechanism ensures that if the same data is needed in multiple components or during different phases of rendering (e.g., getting metadata and rendering the page), the framework triggers only one network request.
+
+A clear example of this usage is found in `app/page.tsx`. This file calls `getHomePage()` in two distinct places:
+
+1. Inside `generateMetadata` to fetch the page title and SEO attributes.
+2. Inside the `Index` component to render the actual page content.
+
+```typescript app/page.tsx
+import { cache } from "react";
+
+// The fetch function is wrapped in cache()
+const getHomePage = cache(async () => {
+  const page = await fetch(
+    `${process.env.API_BASE_URL}/api/littlebox-strapi-suite/modules/pages/home?properties=attributes,content`,
+    headers,
+  );
+  return page.json();
+});
+
+// First call: Triggers the network request
+export async function generateMetadata(): Promise<Metadata> {
+  const page: Page = await getHomePage(); // MISS -> FETCH -> HIT
+  // ...
+}
+
+// Second call: Reuses the data from the first fetch
+export default async function Index() {
+  // ...
+  page = await getHomePage(); // HIT
+  // ...
+}
+```
+
+Without this memoization, the server would make two identical requests to the CMS for every page load. The `cache` function prevents this redundancy, ensuring the `Index` component uses the data already fetched by `generateMetadata`.
+
+## Data Cache & Revalidation
+
+The framework caches data fetched from the CMS to maintain high performance. It manages the freshness of this data through a specific configuration found in files like `app/page.tsx` and `app/layout.tsx`.
+
+The system uses a `headers` object in its internal fetch calls that references an environment variable:
+
+```typescript app/page.tsx
+const headers: RequestInit = {
+  next: { revalidate: Number(process.env.REQUEST_REVALIDATE) },
+  method: "GET",
+  headers: {
+    Authorization: `Bearer ${process.env.API_TOKEN}`,
+    "Content-Type": "application/json",
+  },
+};
+```
+
+- **Configuration**: The `REQUEST_REVALIDATE` environment variable defines the cache lifetime (in seconds) for these fetches.
+- **Behavior**: The framework passes this configuration to every request it makes to the CMS.
+
+This setup ensures that data remains fresh without requiring a rebuild of the entire application.
+
+## Full Route Cache (ISR)
+
+The framework utilizes Incremental Static Regeneration (ISR) to cache rendered pages, reducing the load on the server. This is primarily configured in dynamic page routes like `app/(pages)/[...slug]/page.tsx`.
+
+### Static Generation
+
+By default, the framework statically generates pages. It sets a revalidation period to keep the rendered route cached effectively indefinitely until a new build or revalidation event occurs.
+
+```typescript app/(pages)/[...slug]/page.tsx
+export const revalidate = 31536000; // 1 year
+export const dynamicParams = true;
+```
+
+### Dynamic Routes
+
+For dynamic routes, the framework internally uses `generateStaticParams` to identify which paths to pre-render during the build process.
+
+```typescript app/(pages)/[...slug]/page.tsx
+export async function generateStaticParams() {
+  const pages: Pages[] = await fetch(
+    `${process.env.API_BASE_URL}/api/littlebox-strapi-suite/modules/pages`,
+    headers,
+  ).then((res) => res.json());
+  return pages
+    .filter((page) => page.slug !== "")
+    .map((page) => ({
+      slug: page.slug.split("/"),
+    }));
+}
+```
+
+- **Pre-rendering**: The build process generates static files for all known pages.
+- **On-Demand Generation**: The framework is configured (`dynamicParams = true`) to generate new pages on the first request if they were not created at build time, ensuring that new content is always accessible.
