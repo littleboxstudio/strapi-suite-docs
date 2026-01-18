@@ -1,11 +1,11 @@
 ---
-title: 'Installation'
-description: 'Learn how to install the Littlebox Strapi Suite Frontend'
+title: "Installation"
+description: "Learn how to install the Littlebox Strapi Suite Frontend"
 ---
 
 ## Requirements
 
-The frontend installation guide assumes a standard Strapi setup, which is not covered in this documentation. 
+The frontend installation guide assumes a standard Strapi setup, which is not covered in this documentation.
 Follow the official [Strapi documentation](https://docs.strapi.io/cms/installation) for installation instructions.
 
 Before proceeding, install the Littlebox Strapi Suite Plugin. Follow the plugin [installation guide](/backend/installation).
@@ -15,30 +15,28 @@ The full installation requirements are identical to those of NextJS and can be f
 Supported NextJS versions: 15.0.0 or later.
 
 ## Installation
-You have full access to the code, so the installation is based on a Next.js project that already implements all the concepts 
+
+You have full access to the code, so the installation is based on a Next.js project that already implements all the concepts
 covered in this documentation. Simply clone the repository to get started.
 
 <CodeGroup>
-```bash HTTPS
-git clone https://github.com/littleboxstudio/strapi-suite-frontend.git
-```
-```bash SSH
-git clone git@github.com:littleboxstudio/strapi-suite-frontend.git
-```
-```bash Github CLI
-gh repo clone littleboxstudio/strapi-suite-frontend
-```
+  ```bash HTTPS git clone https://github.com/littleboxstudio/strapi-suite-frontend.git ``` ```bash SSH git clone
+  git@github.com:littleboxstudio/strapi-suite-frontend.git ``` ```bash Github CLI gh repo clone
+  littleboxstudio/strapi-suite-frontend ```
 </CodeGroup>
 
 ### Environment variables
+
 Rename the file `.env.local.example` to `.env.local`, and fill in the variables following the instructions below.
 
 #### `API_BASE_URL`
-This is the URL where the Strapi API is available. Locally, the port may vary depending on your setup, but if you 
+
+This is the URL where the Strapi API is available. Locally, the port may vary depending on your setup, but if you
 followed the standard Strapi installation, the URL is likely to be `http://localhost:1337`.
 
 #### `API_TOKEN`
-This variable stores the API access token. Check the [official documentation](https://docs.strapi.io/cms/features/api-tokens) for more details about tokens. 
+
+This variable stores the API access token. Check the [official documentation](https://docs.strapi.io/cms/features/api-tokens) for more details about tokens.
 The frontend only needs read permissions. Follow the steps below to create an access token:
 
 **Step 1**: Access the Strapi admin panel.\
@@ -48,37 +46,48 @@ The frontend only needs read permissions. Follow the steps below to create an ac
 **Step 5**: Select the `Read-only` token type.\
 **Step 6**: Save and copy the token. Make sure to do this before closing the screen, as you won’t be able to view it again.
 
-<Note> Although the token is configured in the frontend, it is not exposed. 
-Read the official Next.js [documentation](https://nextjs.org/docs/pages/guides/environment-variables) for more information.</Note>
+<Note>
+  {" "}
+  Although the token is configured in the frontend, it is not exposed. Read the official Next.js
+  [documentation](https://nextjs.org/docs/pages/guides/environment-variables) for more information.
+</Note>
 
 #### `SITE_URL`
+
 The domain of the application. Locally, the port depends on your setup, but by default the URL is `http://localhost:3000`.
 
 #### `REQUEST_REVALIDATE`
-The frontend uses `fetch` to call the API and retrieve the list of pages, specific page details, parameters, and the sitemap. 
+
+The frontend uses `fetch` to call the API and retrieve the list of pages, specific page details, parameters, and the sitemap.
 By default, `fetch` requests are not cached, which can significantly impact performance. Read the official [documentation](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch).
 
 To solve this problem, the frontend sets a revalidate value in the headers of each request. This environment variable stores the number of seconds that Next.js should cache the HTML.
 For more details, read the official Next.js [documentation](https://nextjs.org/docs/app/getting-started/caching-and-revalidating#fetch).
 
-<Tip>In a development environment, set this value to 0 to disable caching. This allows you to see changes in real time directly in the browser.</Tip>
+<Tip>
+  In a development environment, set this value to 0 to disable caching. This allows you to see changes in real time
+  directly in the browser.
+</Tip>
 
 #### `NEXT_PUBLIC_SITE_URL`
+
 Unlike the `SITE_URL` variable, this variable is exposed to the frontend and represents the application's domain.
 
 #### `NEXT_PUBLIC_STATIC_URL`
-In Strapi, you can upload static files, such as images. However, the URL of these images is tied to the Strapi admin domain, 
-for example, `https://admin.mydomain.com/uploads/...`. This is not a good practice if you want to avoid exposing the 
-backoffice URL. To fix this, the frontend uses a rewrite solution: leave the variable blank, and internally, without 
-exposing the admin URL, NextJS rewrites the URL using the environment variable `API_BASE_URL`. 
+
+In Strapi, you can upload static files, such as images. However, the URL of these images is tied to the Strapi admin domain,
+for example, `https://admin.mydomain.com/uploads/...`. This is not a good practice if you want to avoid exposing the
+backoffice URL. To fix this, the frontend uses a rewrite solution: leave the variable blank, and internally, without
+exposing the admin URL, NextJS rewrites the URL using the environment variable `API_BASE_URL`.
 
 For more details on how the rewrite works, read the official NextJS [documentation](https://nextjs.org/docs/app/api-reference/config/next-config-js/rewrites).
 
 This variable is also useful if you use a CDN or external services to store static content.
 
 ### Images
-We recommend using the Next.js image component. To avoid exposing the admin URL, as explained in the previous section, 
-you need to allow images only from specific external paths and block all others. This ensures that only images from 
+
+We recommend using the Next.js image component. To avoid exposing the admin URL, as explained in the previous section,
+you need to allow images only from specific external paths and block all others. This ensures that only images from
 your own account can be served. For more details, read the official Next.js [documentation](https://nextjs.org/docs/app/api-reference/components/image#remotepatterns).
 
 ```javascript next.config.ts
@@ -92,33 +101,34 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: '*.mydomain.com',
         pathname: '/uploads/**',
-      },   
+      },
     ],
   },
 };
 ```
 
+### Install dependencies
+
+Run the following command to install the project dependencies:
+
+```bash
+npm install
+```
+
 ### Run the development server
+
 <Info>
-  **Prerequisite**: If you haven’t set up the Littlebox Strapi Suite yet, an error will occur due to missing configurations. 
-  Follow the [step-by-step tutorial](/frontend/your-first-app) to learn how to configure the entire application, both on the frontend and backend.
+  **Prerequisite**: If you haven’t set up the Littlebox Strapi Suite yet, an error will occur due to missing
+  configurations. Follow the [step-by-step tutorial](/frontend/your-first-app) to learn how to configure the entire
+  application, both on the frontend and backend.
 </Info>
-1. Run `npm run dev` to start the development server.
-2. Visit `http://localhost:3000` to view your application.
+1. Run `npm run dev` to start the development server. 2. Visit `http://localhost:3000` to view your application.
 
 <CardGroup cols={2}>
-  <Card
-    title="Backend"
-    icon="code"
-    href="/backend/introduction"
-  >
+  <Card title="Backend" icon="code" href="/backend/introduction">
     Learn how to install the plugin and use the endpoints for better integration with the frontend.
   </Card>
-  <Card
-    title="Hosting"
-    icon="code"
-    href="/hosting/plans"
-  >
+  <Card title="Hosting" icon="code" href="/hosting/plans">
     Explore our hosting solutions for staging and production environments.
   </Card>
 </CardGroup>
