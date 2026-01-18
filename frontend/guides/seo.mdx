@@ -1,8 +1,157 @@
 ---
-title: 'SEO'
-description: 'Section under development. It will be completed soon'
+title: "SEO"
+description: "Learn how to manage SEO metadata and structured data in the frontend framework."
 ---
 
-<Note>
-  Section under development. It will be completed soon.
-</Note>
+# Introduction
+
+Search Engine Optimization (SEO) improves your website's visibility on search engines. This framework provides built-in tools to manage metadata and structured data (JSON-LD) dynamically. You maintain high standards for search performance with minimal effort.
+
+## Objectives
+
+- **Automate Metadata**: Generate titles, descriptions, and Open Graph tags from your content.
+- **Implement Structured Data**: Use JSON-LD to help search engines understand your site's structure.
+- **Ensure Performance**: Keep SEO implementations lightweight and fast.
+
+# Metadata Generation
+
+Next.js uses the `generateMetadata` function to handle SEO metadata. This framework includes a utility function, `metaDataGenerator`, to streamline this process.
+
+## How it Works
+
+The `metaDataGenerator` function takes a `Page` object and a list of `Parameters` as input. It returns a `Metadata` object compliant with Next.js standards.
+
+You find this implementation in the page files:
+
+- `src/app/(pages)/[...slug]/page.tsx`.
+- `src/app/page.tsx`.
+
+```typescript
+export async function generateMetadata({ params }: { params: Promise<{ slug: string[] }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const page: Page = await getPage(slug.join("/"));
+  const parameters: Parameter[] = await getParameters();
+  return metaDataGenerator(page, parameters);
+}
+```
+
+## The Data Source
+
+The `Page` object contains an `seo` property with fields like:
+
+- `metaTitle`: The title tag.
+- `metaDescription`: The meta description.
+- `canonicalURL`: The canonical link.
+- `metaImage`: Social media preview image.
+- `structuredData`: JSON-LD data configuration.
+
+The `metaDataGenerator` maps these fields to the correct Next.js metadata properties, including Open Graph and Twitter Card settings.
+
+# JSON-LD and Structured Data
+
+JSON-LD (JavaScript Object Notation for Linked Data) helps search engines understand the content and context of your pages. It allows for "Rich Snippets" in search results, such as FAQs, breadcrumbs, or product details.
+
+This framework provides ready-to-use components to inject JSON-LD into your pages.
+
+## Advantages
+
+- **Better Understanding**: Search engines interpret your content type (e.g., Article, Product, FAQ) accurately.
+- **Rich Results**: Increases the chance of displaying enhanced listings in search results.
+- **Easy Integration**: You drop in a component, and the framework handles the script generation.
+
+## Available Components
+
+### BaseJsonLd
+
+The `BaseJsonLd` component handles general page structured data. It dynamically replaces placeholders like `[META_TITLE]` with actual content from the SEO fields.
+This component requires the SEO plugin to be installed in Strapi. Read the [Install Strapi SEO](/backend/installation#install-strapi-seo) section to learn how to install the plugin.
+
+**Usage:**
+This component is inserted into pages automatically, so there is no need to implement it. See the base files for the implementation:
+
+- `src/app/(pages)/[...slug]/page.tsx`.
+- `src/app/page.tsx`.
+
+```tsx
+<BaseJsonLd page={page} />
+```
+
+This component works in conjunction with the Strapi Community SEO plugin. In Strapi, when you add the SEO component in the `Content-Type Builder`, the document will now have the option to add SEO:
+
+<img style={{ borderRadius: "0.5rem" }} src="/images/add-seo-component.png" />
+
+<img style={{ borderRadius: "0.5rem" }} src="/images/add-seo-component-2.png" />
+
+In addition to standard SEO fields such as `title` and `description`, the component has another important field, `Structured Data`. This field must be filled in with [valid JSON LD](https://json-ld.org/):
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": "[META_TITLE]",
+  "description": "[META_DESCRIPTION]",
+  "url": "[CANONICAL_URL]",
+  "image": "[META_IMAGE]",
+  "location": {
+    "@type": "Place",
+    "name": "Lisbon",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "PT",
+      "addressRegion": "Lisbon",
+      "addressLocality": "Lisbon"
+    }
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "Littlebox Digital Society",
+    "url": "https://www.littlebox.pt"
+  }
+}
+```
+
+To prevent data duplication, our plugin allows four variables to be inserted into JSON LD:
+
+- `[META_TITLE]`
+- `[META_DESCRIPTION]`
+- `[CANONICAL_URL]`
+- `[META_IMAGE]`
+
+Check file `src/app/core/components/base-jsonld.tsx`, it will automatically replace these tags with values previously filled in the SEO plugin.
+
+### BaseBreadcrumbJsonLd
+
+The `BaseBreadcrumbJsonLd` component generates a `BreadcrumbList` schema. This helps search engines understand the site hierarchy and display breadcrumb navigation in search results.
+
+**Usage:**
+This component is inserted into pages automatically, so there is no need to implement it. See the base files for the implementation:
+
+- `src/app/(pages)/[...slug]/page.tsx`.
+- `src/app/page.tsx`.
+
+```tsx
+<BaseBreadcrumbJsonLd page={page} />
+```
+
+### BaseFaqsJsonLd
+
+The `BaseFaqsJsonLd` component creates an `FAQPage` schema. Use this for pages that contain a list of frequently asked questions.
+
+**Usage:**
+This component should be inserted into pages containing FAQs.
+
+```tsx
+<BaseFaqsJsonLd faqs={faqs} />
+
+// Example:
+<BaseFaqsJsonLd faqs={[
+  {
+    title: "What is your return policy?",
+    text: "Our return policy is 30 days from the date of purchase."
+  }
+]} />
+```
+
+# Summary
+
+By using `metaDataGenerator` and the provided JSON-LD components, you ensure your website uses best practices for technical SEO. You focus on creating content, and the framework handles the technical optimization for search engines.
