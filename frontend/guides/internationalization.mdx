@@ -1,8 +1,111 @@
 ---
-title: 'Internationalization'
-description: 'Section under development. It will be completed soon'
+title: "Internationalization"
+description: "Learn how the framework handles multi-language support and connects with Strapi."
 ---
 
-<Note>
-  Section under development. It will be completed soon.
-</Note>
+## Overview
+
+The framework provides out-of-the-box internationalization (i18n) support, fully integrated with Strapi. It relies on `next-intl` to handle server-side translations and routing, ensuring that your application is accessible in multiple languages with minimal configuration.
+
+## How It Works
+
+The i18n system operates through two main server-side components that communicate directly with your Strapi backend.
+
+### Middleware configuration
+
+The `src/middleware.ts` file acts as the entry point for every request. Its primary role is to determine the user's locale based on the URL path.
+
+1.  **Fetching Locales**: It dynamically fetches the list of available locales from Strapi (`/api/littlebox-strapi-suite/modules/locales`).
+2.  **Routing**: It checks if the current path starts with a valid locale (e.g., `/en/about`).
+3.  **Cookie Management**: If a locale is detected, it proceeds; otherwise, it assigns the default locale and sets the `NEXT_LOCALE` cookie.
+
+```typescript src/middleware.ts
+const data = await fetch(
+  `${process.env.API_BASE_URL}/api/littlebox-strapi-suite/modules/locales`,
+  // ... authentication headers
+).then((res) => res.json());
+
+// Determines the locale from the path or falls back to default
+const path = req.nextUrl.pathname.split("/");
+const pathLocale = data.locales.find((locale) => locale === path[1]);
+const locale = pathLocale || data.default;
+```
+
+### Cookie Synchronization
+
+The `NEXT_LOCALE` cookie serves as the source of truth for the user's preferred language across the session. The framework ensures your application stays in sync with this cookie through the `BaseLayout` component (`src/app/core/components/base-layout.tsx`).
+
+This component actively monitors the `NEXT_LOCALE` cookie. If it detects a change in the cookie's value (for example, after a redirection or a manual set), it automatically triggers a `router.refresh()`. This action ensures that the server-side components re-render with the correct locale data without requiring a full page reload, maintaining a smooth user experience.
+
+### Loading Translations
+
+The `src/i18n/request.ts` file is responsible for populating the translation messages for the determined locale.
+
+It automatically fetches translations from Strapi (`/api/littlebox-strapi-suite/modules/translations`), specifically requesting data for the active language. The system then maps these translations by their unique identifier (`uid`), enabling you to reference them easily in your components.
+
+## Managing Locales Client-Side
+
+You can control language settings and navigation within your components using the `useLocale` hook. This hook exposes the `LocaleContext`, providing methods to switch languages and retrieve locale-specific data.
+
+### Using the Hook
+
+To access the locale functions, import the hook from the core context:
+
+```typescript
+import { useLocale } from "@/app/core/contexts/locale";
+```
+
+### Changing the Language
+
+Use the `set` method to change the current language. This function handles the redirection logic, sending the user to the translated version of the current page if it exists, or falling back to the target language's homepage.
+
+```typescript
+const { set } = useLocale();
+
+<button onClick={() => set('en')}>
+  Switch to English
+</button>
+```
+
+### Listening to Changes
+
+Since the language state is managed via the URL and React Context, components wrapped in the `LocaleProvider` will automatically re-render when the locale changes. You can access the current active locale via the `current` property.
+
+```typescript
+const locale = useLocale();
+useEffect(() => {
+  console.log(`Current language is: ${locale.current}`);
+}, [locale]);
+```
+
+### Getting Available Languages
+
+To retrieve the list of all active languages (e.g., to render a language switcher), use the `get` method:
+
+```typescript
+const { get } = useLocale();
+const locales = get(); // Returns ['en', 'pt', 'es', ...]
+
+return (
+  <ul>
+    {locales.map((lang) => (
+      <li key={lang}>{lang}</li>
+    ))}
+  </ul>
+);
+```
+
+### Links to Homepages
+
+If you need to programmatically link to the homepage of a specific locale, use the `getHomepageLink` method. This is crucial because of the **Home page slug strategy** configured in the backend (see the [Slug documentation](/backend/guides/slug)).
+
+The homepage URL isn't always just the locale prefix; it depends on which document is set as home and the chosen strategy (e.g., identifying by language or by content content). `getHomepageLink` abstracts this complexity, ensuring you always direct users to the correct root path for that language.
+
+```typescript
+const { getHomepageLink } = useLocale();
+
+// Navigates to the English homepage
+const goHome = () => {
+  window.location.href = getHomepageLink("en");
+};
+```
