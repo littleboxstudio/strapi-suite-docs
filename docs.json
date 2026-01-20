@@ -74,6 +74,12 @@
         "pages": [
           "hosting/plans"
         ]
+      },
+      {
+        "tab": "Customizations",
+        "pages": [
+          "customizations"
+        ]
       }
     ],
     "global": {
