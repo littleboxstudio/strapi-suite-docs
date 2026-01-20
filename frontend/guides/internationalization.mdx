@@ -43,6 +43,32 @@ The `src/i18n/request.ts` file is responsible for populating the translation mes
 
 It automatically fetches translations from Strapi (`/api/littlebox-strapi-suite/modules/translations`), specifically requesting data for the active language. The system then maps these translations by their unique identifier (`uid`), enabling you to reference them easily in your components.
 
+## Displaying Translations
+
+Once translations are loaded, you can display them in your components using the `useTranslations` hook from `next-intl`.
+
+### Basic Usage
+
+1.  **Import the hook**:
+
+    ```typescript
+    import { useTranslations } from "next-intl";
+    ```
+
+2.  **Initialize the hook**: Call `useTranslations()` inside your component to get the translation function (commonly named `t`).
+
+    ```typescript
+    export default function NotFound() {
+      const t = useTranslations();
+
+      return (
+        <h1>{t("Page not found")}</h1>
+      );
+    }
+    ```
+
+    In this example, `"Page not found"` serves as the key to look up the translation. If a translation is found for the current locale, it will be displayed; otherwise, it may fall back to the key itself or the default locale's value depending on configuration.
+
 ## Managing Locales Client-Side
 
 You can control language settings and navigation within your components using the `useLocale` hook. This hook exposes the `LocaleContext`, providing methods to switch languages and retrieve locale-specific data.
