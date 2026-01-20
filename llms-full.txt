@@ -1,0 +1,2120 @@
+# Littlebox Strapi Suite Documentation
+
+
+# File: before-starting.mdx
+
+---
+title: Before Starting
+description: "Welcome to the Littlebox Strapi Suite documentation"
+---
+
+## What is Littlebox Strapi Suite?
+The Littlebox Strapi Suite is a plugin designed to enhance Strapi for building and managing institutional websites and blogs. It introduces features such as menu creation, string translations, parameter management, templates, page attributes, and content search via slugs. These additions improve SEO by enabling user-friendly URLs without complex implementation, simplifying site organization and maintenance. When combined with the [Littlebox Strapi Frontend](/frontend/introduction), it becomes a powerful tool that saves development time, simplifies complex tasks, and automates repetitive ones, allowing you to focus on delivering an optimal user experience.
+
+
+<CardGroup cols={2}>
+  <Card
+    title="Backend"
+    icon="code"
+    href="/backend/introduction"
+  >
+    Learn how to install the plugin and use the endpoints for better integration with the frontend.
+  </Card>
+  <Card
+    title="Frontend"
+    icon="code"
+    href="/frontend/introduction"
+  >
+    Learn how our frontend streamlines integration with Strapi by automating repetitive tasks.
+  </Card>
+</CardGroup>
+
+
+
+
+# File: community-support.mdx
+
+---
+title: Community support
+---
+
+- For general help using Strapi, please refer to the official [Strapi documentation](https://docs.strapi.io/).
+- You can contact us at [tools@littlebox.pt](mailto:tools@littlebox.pt).
+- Visit our website [littlebox.pt](https://littlebox.pt).
+
+
+# File: contributing.mdx
+
+---
+title: Contributing
+description: "Help us improve and continue to offer quality products to the community!"
+---
+
+## Github
+Feel free to fork and make a pull request of this plugin. All the input is welcome!\
+Give a star if this project helped you.\
+Check our [repositories](/repositories).
+
+## Donations
+To stay completely free and open-source, we need your help. If you like our work, please consider donating to help us fund the project's future development.
+
+We run our company independently, without outside funding, and rely on your help to keep the project going. This means we can concentrate on serving real users like you, instead of focusing on investors or profits. If you choose to use our self-hosted version, you have the opportunity to support our work. [Talk to us](/community-support) to find out how we can help you with your project.
+
+<Tip>
+By me a coffe: https://buymeacoffee.com/filipemoraes
+</Tip>
+
+## Who is behind this?
+Hey, I'm Filipe Moraes.
+
+I'm a software developer based in Lisbon. In 2002 I started to work with software development and since then I have been accumulating knowledge and experience as backend and frontend. For over 20 years, I've been using technology as a tool to find solutions.
+
+Visit my [LinkedIn profile](https://www.linkedin.com/in/filipemoraes/).\
+Thank you!
+
+# File: license.mdx
+
+---
+title: MIT License
+---
+
+Copyright (c) 2021 - 2025 Push The Button, Lda.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:​
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.​
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+# File: repositories.mdx
+
+---
+title: Repositories
+description: "Help us improve and continue to offer quality products to the community!"
+---
+
+<CardGroup cols={2}>
+  <Card title="Littlebox Strapi Suite" icon="github" href="https://github.com/littleboxstudio/strapi-suite">
+    Frontend integration made easy. Use the Littlebox Strapi Suite plugin to enhance the admin panel with powerful tools
+    that simplify content management and frontend integration.
+  </Card>
+  <Card title="Littlebox Strapi Frontend" icon="github" href="https://github.com/littleboxstudio/strapi-suite-frontend">
+    Save time on Strapi integration and concentrate on delivering an exceptional user experience. Let us handle the
+    technical complexities, so you can focus on what matters most.
+  </Card>
+  <Card title="Littlebox Strapi Docs" icon="github" href="https://github.com/littleboxstudio/strapi-suite-docs">
+    Discover how the Littlebox Strapi Suite can support you. Explore our user-friendly and easy-to-understand
+    documentation to learn how the Littlebox Strapi Suite can assist you.
+  </Card>
+  <Card title="NPM" icon="code" href="https://www.npmjs.com/package/@littlebox/strapi-suite">
+    Install the plugin directly via npm.
+  </Card>
+  <Card
+    title="Littlebox Strapi Backend Base"
+    icon="github"
+    href="https://github.com/littleboxstudio/strapi-suite-backend-base"
+  >
+    A base installation of Strapi with a database running in Docker, designed for testing purposes. This setup already
+    includes the essential configurations for using the Littlebox Strapi Suite plugin.
+  </Card>
+</CardGroup>
+
+
+# File: backend/introduction.mdx
+
+---
+title: Introduction
+description: "Welcome to the Littlebox Strapi Suite documentation"
+---
+
+Visit the [What is Littlebox Strapi Suite?](/before-starting) section to learn more about the plugin’s purpose.
+Below is the list of features that the plugin adds to Strapi. It’s ideal for building and managing institutional websites and blogs.
+
+- [Menus](/backend/guides/menus): powerful menu management tool to create, customize, and organize menus for seamless navigation.
+- [Translations](/backend/guides/translations): simplify and organize string translations for efficient multilingual content management and smooth integration.
+- [Slug](/backend/guides/slug): optimize URLs with smart, SEO-friendly slugs for better rankings and cleaner links effortlessly.
+- [Sitemap](/backend/guides/sitemap): a way to set the properties to generate the sitemap.
+- [Page attributes](/backend/guides/page-attributes): a way to set page properties like templates or parent pages to automatically create full slugs.
+- [Parameters](/backend/guides/parameters): effortlessly manage and customize settings with a intuitive and flexible solution.
+
+
+<CardGroup cols={2}>
+  <Card
+    title="Frontend"
+    icon="code"
+    href="/frontend/introduction"
+  >
+    Learn how our frontend streamlines integration with Strapi by automating repetitive tasks.
+  </Card>
+  <Card
+    title="Hosting"
+    icon="code"
+    href="/hosting/plans"
+  >
+    Explore our hosting solutions for staging and production environments.
+  </Card>
+</CardGroup>
+
+# File: backend/installation.mdx
+
+---
+title: Installation
+description: "Learn how to install the Littlebox Strapi Suite Plugin"
+---
+
+## Requirements
+
+The full installation requirements are identical to those of Strapi and can be found in the [Strapi Quick Start guide](https://docs.strapi.io/cms/quick-start).
+
+- Supported Strapi versions: 5.0.0 or later.
+
+## Installation
+
+<Note>
+  There is a base version of Strapi with all necessary configurations and plugins available at [Strapi Suite Backend
+  Base](https://github.com/littleboxstudio/strapi-suite-backend-base) which you can use to learn about Strapi Suite
+  Plugin. However, for learning purposes, we recommend following the manual configuration.
+</Note>
+
+### Install Strapi Suite
+
+Install the Littlebox Strapi Suite plugin in your Strapi project.
+
+<CodeGroup>
+  ```bash npm npm install @littlebox/strapi-suite --save ``` ```bash yarn yarn add @littlebox/strapi-suite ```
+</CodeGroup>
+
+### Install Strapi SEO
+
+The Littlebox Strapi Suite plugin requires Strapi’s official SEO plugin. Read the plugin [installation guide](https://www.npmjs.com/package/@strapi/plugin-seo) to install and configure it correctly.
+
+### Add required fields
+
+Add some extra fields for the Littlebox Strapi Suite plugin to work correctly.
+Read below to see which fields are mandatory.
+
+#### Slug and title
+
+You can access any document, whether it's part of a collection or a single type, through the API using its slug.
+The Littlebox Suite plugin adds slug-based search functionality, which is especially useful for building dynamic websites like blogs.
+Every document you want to expose to the frontend through the API must include the custom field `Littlebox Slug`, along with the `Title` field.
+Read more about [how the slug works](/backend/guides/slug).
+
+#### Robots
+
+Robots meta tags play an important role in technical SEO. They give you precise control over how search engines handle each page on your site.
+However, these fields are only required when you use the [frontend](/frontend/introduction).
+
+To make the plugin work correctly, create the following custom fields:
+
+- `index` tells search engines to include the page in their index so it appears in search results.
+- `follow` tells bots to follow the links on the page and pass link authority ("link juice"). This is also the default behavior.
+- `nocache` asks Google and other search engines not to store a cached version of the page.
+- `noimageindex` useful when you don’t want images from the page to appear in image search results, while still allowing the rest of the page to be indexed and crawled.
+
+Follow these steps to create the fields. Make sure you [install the official Strapi SEO plugin](/backend/installation#install-strapi-seo) first.
+
+**Step 1**: Access the Strapi admin panel.\
+**Step 2**: Go to the <i>Content-Type Builder</i>.\
+**Step 3**: In the list of components, click on "seo".\
+**Step 4**: Click "Add another field to this component".\
+**Step 5**: Select the "Component" field.\
+**Step 6**: Add the following settings:
+
+<img style={{ borderRadius: "0.5rem" }} src="/images/robots-add-component-step-1.png" />
+<img style={{ borderRadius: "0.5rem" }} src="/images/robots-add-component-step-2.png" />
+<img style={{ borderRadius: "0.5rem" }} src="/images/robots-add-component-step-3.png" />
+**Step 7**: A new component called "robots" appears in the field list. Click "Add another field to this component",
+which appears right below it.
+<img style={{ borderRadius: "0.5rem" }} src="/images/robots-add-component-step-4.png" />
+<img style={{ borderRadius: "0.5rem" }} src="/images/robots-add-component-step-5.png" />
+
+**Step 8**: Repeat `step 7` for the fields "follow", "nocache", and "noimageindex".
+
+<CardGroup cols={2}>
+  <Card title="Frontend" icon="code" href="/frontend/introduction">
+    Learn how our frontend streamlines integration with Strapi by automating repetitive tasks.
+  </Card>
+  <Card title="Hosting" icon="code" href="/hosting/plans">
+    Explore our hosting solutions for staging and production environments.
+  </Card>
+</CardGroup>
+
+
+# File: backend/guides/menus.mdx
+
+---
+title: 'Menus'
+description: 'Learn how to create dynamic menus and connect them to the frontend using the API'
+---
+
+Menus is a module that lets you manage navigation menus through an intuitive drag-and-drop interface.
+It also provides a simple API for easy integration with the frontend.
+
+You can build the frontend however you like, but our [ready-to-use Next.js Frontend](/frontend/introduction) makes integration easier by handling repetitive tasks for you.
+
+## How to create a menu?
+
+**Step 1**: Access the Strapi admin panel.\
+**Step 2**: Go to the <i>Littlebox Strapi Suite</i>.\
+**Step 3**: Select "Menu".\
+**Step 4**: Click "Create new entry".\
+**Step 5**: Set a title and a UID. The UID is used to fetch menu data through the [API](/backend/guides/menus#api).
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/backend-menu-step-1.png"
+/>
+**Step 6**: Add new items to the menu.\
+**Step 7**: Click the `::` icon to drag and reorder the items.\
+**Step 8**: To create nested items, click the `+` icon on an existing item.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/backend-menu-step-3.png"
+/>
+
+**Step 9**: Click the `edit` icon to view or edit the link properties. You can either set a custom URL or link to existing content using a defined [slug](/backend/guides/slug). This is useful because if the content slug changes, the menu updates automatically. You can also define the link target:
+- `_blank` Opens the linked document in a new window or tab.
+- `_self`	Opens the linked document in the same frame as it was clicked.
+- `_parent`	Opens the linked document in the parent frame.
+- `_top` Opens the linked document in the full body of the window.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/backend-menu-step-2.png"
+/>
+
+**Step 10**: Each menu item includes metadata. You can use this metadata to build more dynamic and visually rich menus on the frontend, making it easier to manage everything in one place.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/backend-menu-step-4.png"
+/>
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/backend-menu-step-5.png"
+/>
+
+## API
+
+To get the data from the frontend, use your preferred HTTP client:
+```bash
+curl -X GET "/api/littlebox-strapi-suite/modules/menus?locale=<LOCALE>"
+```
+```json
+[
+    {
+        "id": 1,
+        "documentId": "rvycb4q234yqz47g1v69mzkm",
+        "title": "Header",
+        "uid": "header",
+        "locale": "en",
+        "createdAt": "2025-04-13T19:43:24.092Z",
+        "updatedAt": "2025-04-13T19:48:35.207Z",
+        "publishedAt": "2025-04-13T19:43:24.092Z",
+        "children": [
+            {
+                "id": 1,
+                "documentId": "k6phd1g4cf7ysqw527ok78d5",
+                "menuId": "rvycb4q234yqz47g1v69mzkm",
+                "parentId": null,
+                "title": "Experiences",
+                "url": "experiences",
+                "target": "_self",
+                "order": 1,
+                "metadata": {},
+                "createdAt": "2025-04-13T19:48:35.216Z",
+                "updatedAt": "2025-04-13T19:48:35.216Z",
+                "publishedAt": "2025-04-13T19:48:35.216Z",
+                "children": [
+                    {
+                        "id": 2,
+                        "documentId": "leb5vbdlthaw9uvbfo8njwsv",
+                        "menuId": "rvycb4q234yqz47g1v69mzkm",
+                        "parentId": "1",
+                        "title": "Dolphin Watching",
+                        "url": "experiences/dolphin-watching",
+                        "target": "_blank",
+                        "order": 1,
+                        "metadata": {},
+                        "createdAt": "2025-04-13T19:48:35.224Z",
+                        "updatedAt": "2025-04-13T19:48:35.224Z",
+                        "publishedAt": "2025-04-13T19:48:35.225Z",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "documentId": "zakerhh8fx912il34lxkj04f",
+                "menuId": "rvycb4q234yqz47g1v69mzkm",
+                "parentId": null,
+                "title": "Transfer",
+                "url": "transfer",
+                "target": "_self",
+                "order": 2,
+                "metadata": {},
+                "createdAt": "2025-04-13T19:48:35.234Z",
+                "updatedAt": "2025-04-13T19:48:35.234Z",
+                "publishedAt": "2025-04-13T19:48:35.234Z",
+                "children": []
+            }
+        ]
+    }
+]
+```
+
+<CardGroup cols={2}>
+  <Card
+    title="Frontend"
+    icon="code"
+    href="/frontend/introduction"
+  >
+    Learn how our frontend streamlines integration with Strapi by automating repetitive tasks.
+  </Card>
+  <Card
+    title="Hosting"
+    icon="code"
+    href="/hosting/plans"
+  >
+    Explore our hosting solutions for staging and production environments.
+  </Card>
+</CardGroup>
+
+# File: backend/guides/page-attributes.mdx
+
+---
+title: 'Page Attributes'
+description: 'Learn how to use a page`s attributes'
+---
+
+Any document can be treated as a page once a slug is assigned.
+This makes it possible to define properties that support frontend integration, such as setting a parent document and 
+inheriting its [slug](/backend/guides/slug) to create a hierarchical URL.
+
+## Parent
+It’s useful when defining a page hierarchy, where the child automatically inherits the parent’s slug. This creates a clean, SEO-friendly URL.
+
+For example, in an application with a news listing page at `/news`, clicking on a news item opens a detail page with a URL based on the parent page.
+In this case, the URL combines the parent slug `/news` with the news title, such as "Littlebox Suite helped me build websites faster", resulting in a final URL like `/news/littlebox-suite-helped-me-build-websites-faster`.
+
+**Step 1**: Access the Strapi admin panel.\
+**Step 2**: Go to the <i>Content-Type Builder</i>.\
+**Step 3**: Create a new single type called `news`.\
+**Step 4**: Add the [slug](/backend/guides/slug) custom field and title field.\
+**Step 5**: Create a new collection type called `news`.\
+**Step 6**: Add the custom [slug](/backend/guides/slug) field and title field.\
+**Step 7**: Go to the <i>Content Manager</i>.\
+**Step 8**: Create a new entry in the single type with the title "News".
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/backend-page-attributes-step-1.png"
+/>
+
+**Step 9**: Create a new entry in the collection type with the title "Littlebox Suite helped me build websites faster".\
+**Step 10**: In the left panel, under the Page Attributes section, set the parent to News.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/backend-page-attributes-step-2.png"
+/>
+
+The document automatically inherits the parent’s slug and updates it whenever the parent’s slug changes.
+This hierarchy can extend to three, four, or as many levels as needed. Simply select a parent for each document, as long as that parent also has its own parent.
+
+## Template
+This is useful when used with our [Next.js frontend](/frontend/introduction).\
+This feature injects the document content directly into the template, making integration easier.
+
+**Step 1**: Access the Strapi admin panel.\
+**Step 2**: Go to the <i>Littlebox Strapi Suite</i>.\
+**Step 3**: Select "Template".\
+**Step 4**: Click "Create new entry".\
+**Step 5**: Set a name and a UID. The UUID is used to locate the `.jsx` or `.tsx` file where the data will be injected.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/backend-page-attributes-step-3.png"
+/>
+
+**Step 6**: Go to the <i>Content Manager</i>.\
+**Step 7**: Create a new collection or a single type. Check the [requirements](/backend/installation#add-required-fields) before creating a new document.\
+**Step 8**: Select the template created in `step 5` and save it.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/backend-page-attributes-step-4.png"
+/>
+
+For more information on how to retrieve data in the template, read the [template documentation](/frontend/guides/templates) in the frontend section.
+
+## Priority and change frequency
+In SEO, especially in XML sitemaps, the tags priority and changefreq (change frequency) are used to inform search engines about the relative importance of each page and how often the content is likely to change.
+Although these tags don't guarantee that Google or other search engines will follow the suggestions exactly, they still provide helpful guidance.
+
+For more information, read the [sitemap documentation](/frontend/guides/seo#sitemap) in the frontend section.
+
+## API
+To get the data from the frontend, use your preferred HTTP client:
+```bash
+curl -X GET "/api/littlebox-strapi-suite/modules/pages?slug=<SLUG>&properties=attributes"
+```
+```json
+{
+    "document": {
+        "id": 26,
+        "documentId": "i111r5p3pa73r6tm71b7lh86",
+        "title": "Littlebox Suite helped me build websites faster",
+        "slug": "news/littlebox-suite-helped-me-build-websites-faster",
+        "createdAt": "2025-04-13T21:32:18.148Z",
+        "updatedAt": "2025-04-13T21:50:12.142Z",
+        "publishedAt": "2025-04-13T21:50:12.161Z",
+        "locale": "en",
+        "localizations": [
+            {
+                "id": 27,
+                "documentId": "i111r5p3pa73r6tm71b7lh86",
+                "title": "Littlebox Suite ajudou-me a construir sites mais rápido",
+                "slug": "pt/noticias/littlebox-suite-ajudou-me-a-construir-sites-mais-rapido",
+                "createdAt": "2025-04-13T21:37:55.693Z",
+                "updatedAt": "2025-04-13T22:05:35.160Z",
+                "publishedAt": "2025-04-13T22:05:35.185Z",
+                "locale": "pt"
+            }
+        ]
+    },
+    "attributes": {
+        "template": "default",
+        "priority": "0.5",
+        "frequency": "never",
+        "parent": {
+            "id": "wnzxub0s3ghckznjdkshgcw7",
+            "model": "api::page.page"
+        }
+    }
+}
+```
+
+<CardGroup cols={2}>
+  <Card
+    title="Frontend"
+    icon="code"
+    href="/frontend/introduction"
+  >
+    Learn how our frontend streamlines integration with Strapi by automating repetitive tasks.
+  </Card>
+  <Card
+    title="Hosting"
+    icon="code"
+    href="/hosting/plans"
+  >
+    Explore our hosting solutions for staging and production environments.
+  </Card>
+</CardGroup>
+
+# File: backend/guides/parameters.mdx
+
+---
+title: 'Parameters'
+description: 'Learn how to create parameters and connect them to the frontend using the API'
+---
+
+Parameters are used to control behavior without changing the source code.
+They store important information that the system need at runtime across different environments.
+
+## How to create a parameter?
+
+**Step 1**: Access the Strapi admin panel.\
+**Step 2**: Go to the <i>Littlebox Strapi Suite</i>.\
+**Step 3**: Select "Parameter".\
+**Step 4**: Click "Create new entry".\
+**Step 5**: Set the value, the UID, and whether the parameter is `private` (available only to the backend and other plugins) or `public` (also available to the frontend).
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/backend-parameters-step-1.png"
+/>
+
+## API
+
+To get the data from the frontend, use your preferred HTTP client:
+```bash
+curl -X GET "/api/littlebox-strapi-suite/modules/parameters"
+```
+```json
+[
+    {
+        "uid": "recaptcha-public-key",
+        "value": "iuyTYYT7ybknokdiuYTtdjapodu"
+    }
+]
+```
+
+This request will only return public parameters. To get the private parameters from the Strapi backend (e.g. for use in other plugins), use the `@strapi/strapi/admin` library:
+
+```javascript
+import { getFetchClient } from '@strapi/strapi/admin';
+const { get } = getFetchClient();
+const data = await get('/littlebox-strapi-suite/admin/parameters');
+```
+
+<CardGroup cols={2}>
+  <Card
+    title="Frontend"
+    icon="code"
+    href="/frontend/introduction"
+  >
+    Learn how our frontend streamlines integration with Strapi by automating repetitive tasks.
+  </Card>
+  <Card
+    title="Hosting"
+    icon="code"
+    href="/hosting/plans"
+  >
+    Explore our hosting solutions for staging and production environments.
+  </Card>
+</CardGroup>
+
+# File: backend/guides/sitemap.mdx
+
+---
+title: 'Sitemap'
+description: 'Learn how to create parameters and connect them to the frontend using the API'
+---
+
+The sitemap helps search engines (like Google) understand the structure of your site.
+It lists all important pages, making indexing easier and improving visibility in search results.
+
+## API
+
+To get the data from the frontend, use your preferred HTTP client:
+```bash
+curl -X GET "/api/littlebox-strapi-suite/modules/pages?properties=attributes"
+```
+```json
+[
+    {
+        "id": 69,
+        "documentId": "un6hqh6smm657hwf0n06xm72",
+        "slug": "noticias/littlebox-suite-ajudou-me-a-construir-sites-mais-rapido",
+        "locale": "pt",
+        "updatedAt": "2025-04-14T22:19:21.283Z",
+        "attributes": {
+            "template": "default",
+            "priority": "0.5",
+            "frequency": "weekly"
+        },
+        "localizations": [
+            {
+                "id": 74,
+                "documentId": "un6hqh6smm657hwf0n06xm72",
+                "slug": "en/news/littlebox-suite-helped-me-build-websites-faster",
+                "locale": "en",
+                "updatedAt": "2025-04-14T23:45:50.237Z",
+                "attributes": {
+                    "template": "default",
+                    "priority": "0.5",
+                    "frequency": "weekly"
+                }
+            },
+            {
+                "id": 76,
+                "documentId": "un6hqh6smm657hwf0n06xm72",
+                "slug": "fr/actualites/littlebox-suite-m-a-aide-a-creer-des-sites-web-plus-rapidement",
+                "locale": "fr",
+                "updatedAt": "2025-04-15T10:49:51.275Z",
+                "attributes": {
+                    "template": "default",
+                    "priority": "0.5",
+                    "frequency": "weekly"
+                }
+            }
+        ]
+    }
+]
+```
+
+With this data, it's possible to build the sitemap using the frontend technology of your choice.\
+However, if you prefer, you can use our [ready-to-go Next.js frontend](/frontend/introduction) as a base, which already implements these solutions.
+
+<CardGroup cols={2}>
+  <Card
+    title="Frontend"
+    icon="code"
+    href="/frontend/introduction"
+  >
+    Learn how our frontend streamlines integration with Strapi by automating repetitive tasks.
+  </Card>
+  <Card
+    title="Hosting"
+    icon="code"
+    href="/hosting/plans"
+  >
+    Explore our hosting solutions for staging and production environments.
+  </Card>
+</CardGroup>
+
+# File: backend/guides/slug.mdx
+
+---
+title: 'Slug'
+description: 'Learn how to create slugs and connect them to the frontend using the API'
+---
+
+The slug is a URL that clearly and user-friendly identifies the content of a page.
+It’s important because it improves user experience, makes links easier to share, and helps with SEO by allowing search engines to understand what the page is about.
+
+
+## Settings
+**Step 1**: Access the Strapi admin panel.\
+**Step 2**: Go to the <i>Littlebox Strapi Suite</i>.\
+**Step 3**: Select "Slug".\
+**Step 4**: Click "Settings".
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/slug-add-component-step-8.png"
+/>
+
+**Show language slug**\
+Defines whether the default language appears in the URL.
+For example, if the default language is `en` and the parameter is set to `false`, the URL will be `domain.com/news`.
+If the parameter is set to `true`, the URL will be `domain.com/en/news`.
+
+**Home page**\
+Defines which document is used as the home page.
+The content of this document is injected into the template defined within it.
+Read more about [templates](/backend/guides/page-attributes#template). In the list of slugs, the document set as the homepage will display an identification tag.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/slug-add-component-step-9.png"/>
+
+**Home page slug strategy**\
+Defines which strategy to use for the homepage slug. The following strategies are available:
+- `Language` Every document has a slug. When a document is set as the homepage, the system ignores the slug defined 
+for that document and uses the language slug instead. For example, if the document with the slug `/news` is set as the homepage, 
+the system does not add the slug for the default language, so accessing the root domain `domain.com` will open it. 
+For other languages, the system adds the language slug, such as `domain.com/pt`, which opens the "news" document 
+as the homepage in Portuguese.
+- `Content` The system uses the slug set in the document assigned as the homepage.
+
+## How to create a slug?
+**Step 1**: Access the Strapi admin panel.\
+**Step 2**: Go to the <i>Content-Type Builder</i>.\
+**Step 3**: Select the collection or single type that will be exposed to the frontend through the API.\
+**Step 4**: Click "Add another field to this component".\
+**Step 5**: Go to the <i>Custom</i> tab.\
+**Step 6**: Select the "Littlebox Slug" field.\
+**Step 7**: Fill in the following settings:
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/slug-add-component-step-1.png"
+/>
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/slug-add-component-step-2.png"
+/>
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/slug-add-component-step-3.png"
+/>
+
+**Step 8**: Click "Add another field to this component" again.\
+**Step 9**: Select the "Text" field.\
+**Step 10**: Fill in the following settings:
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/slug-add-component-step-4.png"
+/>
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/slug-add-component-step-5.png"
+/>
+
+The document now includes a slug field.
+The slug can be attached to the title field, so it updates automatically when the title changes. To do this, click the icon next to the `Edit` button.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/slug-add-component-step-6.png"
+/>
+When the `Edit` button is clicked and changes are saved, the slug is detached from the title, and the two fields become independent.
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/slug-add-component-step-7.png?v2"
+/>
+
+## API
+### Get data for pages
+To get the data from the frontend, use your preferred HTTP client:
+```bash
+curl -X GET "/api/littlebox-strapi-suite/modules/pages?slug=<SLUG>"
+```
+```json
+{
+    "document": {
+        "id": 26,
+        "documentId": "i111r5p3pa73r6tm71b7lh86",
+        "title": "Littlebox Suite helped me build websites faster",
+        "slug": "news/littlebox-suite-helped-me-build-websites-faster",
+        "createdAt": "2025-04-13T21:32:18.148Z",
+        "updatedAt": "2025-04-13T21:50:12.142Z",
+        "publishedAt": "2025-04-13T21:50:12.161Z",
+        "locale": "en",
+        "localizations": [
+            {
+                "id": 27,
+                "documentId": "i111r5p3pa73r6tm71b7lh86",
+                "title": "Littlebox Suite ajudou-me a construir sites mais rápido",
+                "slug": "pt/noticias/littlebox-suite-ajudou-me-a-construir-sites-mais-rapido",
+                "createdAt": "2025-04-13T21:37:55.693Z",
+                "updatedAt": "2025-04-13T22:05:35.160Z",
+                "publishedAt": "2025-04-13T22:05:35.185Z",
+                "locale": "pt"
+            }
+        ]
+    }
+}
+```
+<Tip>
+  The default language won't show up in the URL slug if the `SHOW LANGUAGE SLUG` setting is turned off in the slug module settings.
+</Tip>
+
+### Get data for homepage
+To get the data from the frontend, use your preferred HTTP client:
+```bash
+curl -X GET "/api/littlebox-strapi-suite/modules/pages/home?properties=attributes"
+```
+```json
+{
+    "document": {
+        "id": 53,
+        "documentId": "un6hqh6smm657hwf0n06xm72",
+        "title": "Home PT",
+        "slug": "",
+        "createdAt": "2025-04-14T19:38:34.673Z",
+        "updatedAt": "2025-04-14T22:19:21.242Z",
+        "publishedAt": "2025-04-14T22:19:21.270Z",
+        "locale": "pt",
+        "localizations": [
+            {
+                "id": 59,
+                "documentId": "un6hqh6smm657hwf0n06xm72",
+                "title": "Home EN",
+                "slug": "en",
+                "createdAt": "2025-04-14T22:19:29.371Z",
+                "updatedAt": "2025-04-14T23:45:50.177Z",
+                "publishedAt": "2025-04-14T23:45:50.210Z",
+                "locale": "en"
+            },
+            {
+                "id": 61,
+                "documentId": "un6hqh6smm657hwf0n06xm72",
+                "title": "Home EU",
+                "slug": "en-eu",
+                "createdAt": "2025-04-15T10:49:50.490Z",
+                "updatedAt": "2025-04-15T10:49:51.244Z",
+                "publishedAt": "2025-04-15T10:49:51.263Z",
+                "locale": "en-EU"
+            }
+        ]
+    },
+    "attributes": {
+        "template": "default",
+        "priority": "0.5",
+        "frequency": "weekly"
+    }
+}
+```
+<Tip>
+  To return the page content, add the value "content": `properties=attributes,content`
+</Tip>
+
+<CardGroup cols={2}>
+  <Card
+    title="Frontend"
+    icon="code"
+    href="/frontend/introduction"
+  >
+    Learn how our frontend streamlines integration with Strapi by automating repetitive tasks.
+  </Card>
+  <Card
+    title="Hosting"
+    icon="code"
+    href="/hosting/plans"
+  >
+    Explore our hosting solutions for staging and production environments.
+  </Card>
+</CardGroup>
+
+# File: backend/guides/translations.mdx
+
+---
+title: 'Translations'
+description: 'Learn how to create translations and connect them to the frontend using the API'
+---
+
+The translations module adapts the content of a website or app to different languages, making it easier for users 
+from various regions to access. Strapi already provides built-in solutions for document internationalization. However, 
+this module is useful for standalone translations that do not belong to any document context.
+
+## How to create translations?
+**Step 1**: Access the Strapi admin panel.\
+**Step 2**: Go to the <i>Littlebox Strapi Suite</i>.\
+**Step 3**: Select "Translation".\
+**Step 4**: Click "Create new entry".
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src="/images/backend-translations-step-1.png"
+/>
+<Note>
+Use simple text as the UID for short content, or use an ID for longer or more complex text. In the example above, the text itself serves as the UID because it is simple. However, if it is necessary to include, for example, HTML, use an alias as the UID.
+</Note>
+
+## API
+To get the data from the frontend, use your preferred HTTP client:
+```bash
+curl -X GET "/api/littlebox-strapi-suite/modules/translations"
+```
+```json
+[
+    {
+        "id": 5,
+        "uid": "About us",
+        "translations": {
+            "en": "About us",
+            "pt": "Sobre nós"
+        }
+    },
+    {
+        "id": 3,
+        "uid": "Book now",
+        "translations": {
+            "en": "Book now",
+            "pt": "Reserve agora"
+        }
+    }
+]
+```
+
+With this data, translations can be used with the front-end technology of your choice.\
+However, if you prefer, you can use our [ready-to-go Next.js frontend](/frontend/introduction) as a base, which already implements these solutions.
+
+<CardGroup cols={2}>
+  <Card
+    title="Frontend"
+    icon="code"
+    href="/frontend/introduction"
+  >
+    Learn how our frontend streamlines integration with Strapi by automating repetitive tasks.
+  </Card>
+  <Card
+    title="Hosting"
+    icon="code"
+    href="/hosting/plans"
+  >
+    Explore our hosting solutions for staging and production environments.
+  </Card>
+</CardGroup>
+
+# File: frontend/introduction.mdx
+
+---
+title: 'Introduction'
+description: 'Welcome to the Littlebox Strapi Suite Frontend documentation'
+---
+
+Littlebox Strapi Suite Frontend is a lightweight framework built on top of Next.js. It simplifies the integration with Strapi and reduces repetitive tasks, 
+helping you save time and focus on delivering a great user experience. Let the technical complexities stay behind the scenes so you can focus on what really matters.
+
+You know how most traditional libraries work: you install a package from NPM, import the dependencies, and use them in your app. But we offer a different approach. You have full access to the source code and can make changes as needed, although, in most cases, this shouldn’t be necessary. 
+Visit the [Essentials](/frontend/guides/essentials) section to understand the structure before making any changes.
+
+Use the frontend together with the Littlebox Strapi Suite Plugin. Visit the [What is Littlebox Strapi Suite?](/before-starting) section to learn more about the plugin’s purpose.
+
+<CardGroup cols={2}>
+  <Card
+    title="Backend"
+    icon="code"
+    href="/backend/introduction"
+  >
+    Learn how to install the plugin and use the endpoints for better integration with the frontend.
+  </Card>
+  <Card
+    title="Hosting"
+    icon="code"
+    href="/hosting/plans"
+  >
+    Explore our hosting solutions for staging and production environments.
+  </Card>
+</CardGroup>
+
+# File: frontend/installation.mdx
+
+---
+title: "Installation"
+description: "Learn how to install the Littlebox Strapi Suite Frontend"
+---
+
+## Requirements
+
+The frontend installation guide assumes a standard Strapi setup, which is not covered in this documentation.
+Follow the official [Strapi documentation](https://docs.strapi.io/cms/installation) for installation instructions.
+
+Before proceeding, install the Littlebox Strapi Suite Plugin. Follow the plugin [installation guide](/backend/installation).
+
+The full installation requirements are identical to those of NextJS and can be found in the [NextJS documentation](https://nextjs.org/docs/app/getting-started/installation#system-requirements).
+
+Supported NextJS versions: 15.0.0 or later.
+
+## Installation
+
+You have full access to the code, so the installation is based on a Next.js project that already implements all the concepts
+covered in this documentation. Simply clone the repository to get started.
+
+<CodeGroup>
+  ```bash HTTPS git clone https://github.com/littleboxstudio/strapi-suite-frontend.git ``` ```bash SSH git clone
+  git@github.com:littleboxstudio/strapi-suite-frontend.git ``` ```bash Github CLI gh repo clone
+  littleboxstudio/strapi-suite-frontend ```
+</CodeGroup>
+
+### Environment variables
+
+Rename the file `.env.local.example` to `.env.local`, and fill in the variables following the instructions below.
+
+#### `API_BASE_URL`
+
+This is the URL where the Strapi API is available. Locally, the port may vary depending on your setup, but if you
+followed the standard Strapi installation, the URL is likely to be `http://localhost:1337`.
+
+#### `API_TOKEN`
+
+This variable stores the API access token. Check the [official documentation](https://docs.strapi.io/cms/features/api-tokens) for more details about tokens.
+The frontend only needs read permissions. Follow the steps below to create an access token:
+
+**Step 1**: Access the Strapi admin panel.\
+**Step 2**: Go to the <i>Settings -> API Tokens</i>.\
+**Step 3**: Click "Add new API Token".\
+**Step 4**: Choose unlimited duration.\
+**Step 5**: Select the `Read-only` token type.\
+**Step 6**: Save and copy the token. Make sure to do this before closing the screen, as you won’t be able to view it again.
+
+<Note>
+  {" "}
+  Although the token is configured in the frontend, it is not exposed. Read the official Next.js
+  [documentation](https://nextjs.org/docs/pages/guides/environment-variables) for more information.
+</Note>
+
+#### `SITE_URL`
+
+The domain of the application. Locally, the port depends on your setup, but by default the URL is `http://localhost:3000`.
+
+#### `REQUEST_REVALIDATE`
+
+The frontend uses `fetch` to call the API and retrieve the list of pages, specific page details, parameters, and the sitemap.
+By default, `fetch` requests are not cached, which can significantly impact performance. Read the official [documentation](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch).
+
+To solve this problem, the frontend sets a revalidate value in the headers of each request. This environment variable stores the number of seconds that Next.js should cache the HTML.
+For more details, read the official Next.js [documentation](https://nextjs.org/docs/app/getting-started/caching-and-revalidating#fetch).
+
+<Tip>
+  In a development environment, set this value to 0 to disable caching. This allows you to see changes in real time
+  directly in the browser.
+</Tip>
+
+#### `NEXT_PUBLIC_SITE_URL`
+
+Unlike the `SITE_URL` variable, this variable is exposed to the frontend and represents the application's domain.
+
+#### `NEXT_PUBLIC_STATIC_URL`
+
+In Strapi, you can upload static files, such as images. However, the URL of these images is tied to the Strapi admin domain,
+for example, `https://admin.mydomain.com/uploads/...`. This is not a good practice if you want to avoid exposing the
+backoffice URL. To fix this, the frontend uses a rewrite solution: leave the variable blank, and internally, without
+exposing the admin URL, NextJS rewrites the URL using the environment variable `API_BASE_URL`.
+
+For more details on how the rewrite works, read the official NextJS [documentation](https://nextjs.org/docs/app/api-reference/config/next-config-js/rewrites).
+
+This variable is also useful if you use a CDN or external services to store static content.
+
+### Images
+
+We recommend using the Next.js image component. To avoid exposing the admin URL, as explained in the previous section,
+you need to allow images only from specific external paths and block all others. This ensures that only images from
+your own account can be served. For more details, read the official Next.js [documentation](https://nextjs.org/docs/app/api-reference/components/image#remotepatterns).
+
+```javascript next.config.ts
+const nextConfig: NextConfig = {
+  //...
+  images: {
+    qualities: [100],
+    remotePatterns: [
+      //...
+      {
+        protocol: 'https',
+        hostname: '*.mydomain.com',
+        pathname: '/uploads/**',
+      },
+    ],
+  },
+};
+```
+
+### Install dependencies
+
+Run the following command to install the project dependencies:
+
+```bash
+npm install
+```
+
+### Run the development server
+
+<Info>
+  **Prerequisite**: If you haven’t set up the Littlebox Strapi Suite yet, an error will occur due to missing
+  configurations. Follow the [step-by-step tutorial](/frontend/your-first-app) to learn how to configure the entire
+  application, both on the frontend and backend.
+</Info>
+1. Run `npm run dev` to start the development server. 2. Visit `http://localhost:3000` to view your application.
+
+<CardGroup cols={2}>
+  <Card title="Backend" icon="code" href="/backend/introduction">
+    Learn how to install the plugin and use the endpoints for better integration with the frontend.
+  </Card>
+  <Card title="Hosting" icon="code" href="/hosting/plans">
+    Explore our hosting solutions for staging and production environments.
+  </Card>
+</CardGroup>
+
+
+# File: frontend/guides/essentials.mdx
+
+---
+title: "Essentials"
+description: "Understand the core structure and essential files of the frontend framework."
+---
+
+This guide covers the essential files and directories of the frontend framework. It explains the purpose of each component and differentiates between the framework core and your project-specific implementations.
+
+## Core Directory
+
+The `app/core` folder is the heart of the framework. You generally do not need to touch these files unless you are modifying the framework itself.
+
+### `types.ts`
+
+Located in `app/core/types.ts`, this file handles all the TypeScript interfaces that map to the Strapi data models. It defines the structure for Pages, Menus, and other core data types used throughout the application.
+
+### `components`
+
+The `app/core/components` directory contains the base React components that drive the application, such as the Base Layout, Base Template, and JSON-LD components. These ensure consistent rendering and SEO structure across your site.
+
+### `contexts`
+
+The `app/core/contexts` directory provides the React Contexts that manage global state. This includes:
+
+- **Locale**: Manages the current language and routing.
+- **Menu**: Handles the navigation data fetched from Strapi.
+- **Parameters**: Stores global configuration settings.
+
+### `lib`
+
+The `app/core/lib` folder contains utility functions, most notably the `metaDataGenerator`, which standardizes how SEO metadata is constructed from Strapi data.
+
+## Root Application Files
+
+These files sit at the root of the `app` directory and serve as the entry points for your application.
+
+### `layout.tsx`
+
+This is your root layout file. It wraps your entire application with necessary providers (Locale, Menu, Parameters, NextIntl) and handles font loading (`Inter` and `Ovtreasure`).
+**Note**: While this is a framework file, you modify it to add custom providers, change fonts, or update favicons.
+
+### `page.tsx`
+
+This file acts as the main entry point for the homepage. It fetches the initial data and dynamically determines which template to render based on the `model` attribute from Strapi. It also executes the `content.ts` injection strategy if one exists for the active template.
+
+### `global.scss`
+
+Located at `app/globals.scss`, this file holds the global styles. It is part of the framework structure, but you use it to import your project's custom SCSS or define global CSS rules.
+
+### `not-found.tsx`
+
+This file handles 404 errors. The framework provides the structure, but you implement the specific UI (images, text, layout) to match your project's design.
+
+### SEO Files
+
+- **`robots.ts`**: Automatically generates the `robots.txt` file based on environment variables.
+- **`sitemap.ts`**: Automatically generates the `sitemap.xml` by fetching all valid pages from Strapi and mapping their localized URLs.
+
+## Dynamic Routing
+
+The framework handles routing dynamically through the `app/(pages)` directory.
+
+### `[...slug]/page.tsx`
+
+Located in `app/(pages)/[...slug]/page.tsx`, this file catches all routes that are not the homepage.
+
+- **Functionality**: It uses the URL slug to fetch the corresponding page data from Strapi and renders the appropriate template.
+- **Customization**: Although this is a framework file, it serves as a key integration point. You can modify it to add global components that should appear on all inner pages, such as specific headers, floating action buttons, or other layout elements that are independent of the chosen template.
+
+## Templates System
+
+The framework uses a dynamic template system located in `app/templates`.
+
+### Default Template
+
+The `app/templates/default` folder is the only template included with the framework core.
+
+- **`index.tsx`**: The main component that iterates over the blocks defined in Strapi and renders the corresponding React components.
+
+### Content Injection (`content.ts`)
+
+You can inject custom data into a template using a `content.ts` file. This file usually resides in your template folder (e.g., `app/templates/default/content.ts`). Check the [Templates](/frontend/guides/templates) section for a better understanding of how `content.ts` works.
+
+The `content.ts` export allows you to:
+
+1.  **Modify the Page Object**: You can use this function to modify the page object and inject custom data. For example, or you can add a custom property to the page object, or change the existing ones, etc.
+2.  **Fetch External Data**: It's possible to use this function to fetch data from external sources and inject it into the page object.
+
+Example usage in `content.ts`:
+
+```typescript
+import { Page } from "@/app/core/types";
+
+export default async function (page: Page): Promise<void> {
+  // Inject custom property into the page object
+  page.document.custom = "custom property value";
+
+  // Fetch external data and inject it
+  const response = await fetch("https://api.example.com/data");
+  const data = await response.json();
+  page.document.externalData = data;
+}
+```
+
+## Internationalization
+
+### `middleware.ts`
+
+This file connects your Next.js application to the Strapi backend to validate locales. It checks the URL path, verifies if the requested locale exists in Strapi, and manages the routing and cookie setting for internationalization.
+
+### `i18n` Folder
+
+The `i18n` directory configures the `next-intl` library. It handles the request scope and fetches the translation strings directly from Strapi.
+
+**What are "Translations"?**
+
+These translations are standalone strings that do not belong to any specific document (page) context. They are typically used for static UI elements like buttons ("Book now"), labels ("About us"), or error messages. By fetching them from the backend, you ensure these strings can be managed via the CMS without requiring code deployments for text changes.
+
+For more details on how these are managed in the backend, refer to the [Translations](/backend/guides/translations) guide.
+
+## Project vs. Framework
+
+While the folder structure is provided by the framework, the contents of the following directories are usually 100% your project's implementation:
+
+- **`app/api`**: Create your custom API endpoints.
+- **`app/components`**: Build your project-specific UI components.
+- **`app/context`**: Create custom React contexts for your application's specific needs.
+- **`app/assets`**: Store your static assets (images, fonts, etc.).
+
+
+# File: frontend/guides/attributes.mdx
+
+---
+title: "Attributes"
+description: "Learn how to use attributes to configure your pages."
+---
+
+Attributes allow you to configure how the frontend renders your pages. They act as a bridge between your Strapi content and the frontend application.
+
+## Template
+
+The template attribute determines which React component renders your page content. When you select a template in Strapi, the frontend dynamically imports the corresponding component.
+
+Open the file `frontend/src/app/(pages)/[...slug]/page.tsx` to see this in action:
+
+```typescript
+const content = await import(`../../templates/${page.attributes.template}/content.ts`);
+const strategy = content.default;
+await strategy(page);
+
+const Template = dynamic<TemplateProps>(() =>
+  import(`../../templates/${page.attributes.template}`).then((mod) => mod.default),
+);
+```
+
+To create a new layout, add a new folder in `frontend/src/app/templates/` matching the template name you defined in Strapi.
+
+## Parent
+
+The parent attribute establishes a hierarchy for your content. This structure directly affects two key areas of your frontend:
+
+1. **URL Structure**: Child pages inherit the parent's slug, creating nested URLs (e.g., `/services/web-design`).
+2. **Breadcrumbs**: The `BaseBreadcrumbJsonLd` component uses this hierarchy to generate structured data for search engines, helping them understand your site structure.
+
+## SEO Attributes
+
+The `priority` and `change frequency` attributes help search engines strictly for sitemap generation. Ideally, you set these to guide crawlers on how often to visit your pages and how important they are relative to one another.
+
+
+# File: frontend/guides/cache.mdx
+
+---
+title: "Caching Strategies"
+description: "Learn how the framework uses caching to optimize performance."
+---
+
+## Overview
+
+The framework employs a robust caching strategy to ensure fast load times and reduce server load. It automatically minimizes network requests and optimizes content delivery by leveraging Next.js caching mechanisms.
+
+The caching system operates on three levels:
+
+1. **Request Memoization**: Deduplicates requests within the same render pass.
+2. **Data Cache**: Caches the results of fetch requests across requests.
+3. **Full Route Cache**: Stores the rendered HTML and React Server Component payload at build time.
+
+## Request Memoization
+
+The framework uses the `cache` function from React to memoize data fetching functions. This internal mechanism ensures that if the same data is needed in multiple components or during different phases of rendering (e.g., getting metadata and rendering the page), the framework triggers only one network request.
+
+A clear example of this usage is found in `app/page.tsx`. This file calls `getHomePage()` in two distinct places:
+
+1. Inside `generateMetadata` to fetch the page title and SEO attributes.
+2. Inside the `Index` component to render the actual page content.
+
+```typescript app/page.tsx
+import { cache } from "react";
+
+// The fetch function is wrapped in cache()
+const getHomePage = cache(async () => {
+  const page = await fetch(
+    `${process.env.API_BASE_URL}/api/littlebox-strapi-suite/modules/pages/home?properties=attributes,content`,
+    headers,
+  );
+  return page.json();
+});
+
+// First call: Triggers the network request
+export async function generateMetadata(): Promise<Metadata> {
+  const page: Page = await getHomePage(); // MISS -> FETCH -> HIT
+  // ...
+}
+
+// Second call: Reuses the data from the first fetch
+export default async function Index() {
+  // ...
+  page = await getHomePage(); // HIT
+  // ...
+}
+```
+
+Without this memoization, the server would make two identical requests to the CMS for every page load. The `cache` function prevents this redundancy, ensuring the `Index` component uses the data already fetched by `generateMetadata`.
+
+## Data Cache & Revalidation
+
+The framework caches data fetched from the CMS to maintain high performance. It manages the freshness of this data through a specific configuration found in files like `app/page.tsx` and `app/layout.tsx`.
+
+The system uses a `headers` object in its internal fetch calls that references an environment variable:
+
+```typescript app/page.tsx
+const headers: RequestInit = {
+  next: { revalidate: Number(process.env.REQUEST_REVALIDATE) },
+  method: "GET",
+  headers: {
+    Authorization: `Bearer ${process.env.API_TOKEN}`,
+    "Content-Type": "application/json",
+  },
+};
+```
+
+- **Configuration**: The `REQUEST_REVALIDATE` environment variable defines the cache lifetime (in seconds) for these fetches.
+- **Behavior**: The framework passes this configuration to every request it makes to the CMS.
+
+This setup ensures that data remains fresh without requiring a rebuild of the entire application.
+
+## Full Route Cache (ISR)
+
+The framework utilizes Incremental Static Regeneration (ISR) to cache rendered pages, reducing the load on the server. This is primarily configured in dynamic page routes like `app/(pages)/[...slug]/page.tsx`.
+
+### Static Generation
+
+By default, the framework statically generates pages. It sets a revalidation period to keep the rendered route cached effectively indefinitely until a new build or revalidation event occurs.
+
+```typescript app/(pages)/[...slug]/page.tsx
+export const revalidate = 31536000; // 1 year
+export const dynamicParams = true;
+```
+
+### Dynamic Routes
+
+For dynamic routes, the framework internally uses `generateStaticParams` to identify which paths to pre-render during the build process.
+
+```typescript app/(pages)/[...slug]/page.tsx
+export async function generateStaticParams() {
+  const pages: Pages[] = await fetch(
+    `${process.env.API_BASE_URL}/api/littlebox-strapi-suite/modules/pages`,
+    headers,
+  ).then((res) => res.json());
+  return pages
+    .filter((page) => page.slug !== "")
+    .map((page) => ({
+      slug: page.slug.split("/"),
+    }));
+}
+```
+
+- **Pre-rendering**: The build process generates static files for all known pages.
+- **On-Demand Generation**: The framework is configured (`dynamicParams = true`) to generate new pages on the first request if they were not created at build time, ensuring that new content is always accessible.
+
+
+# File: frontend/guides/internationalization.mdx
+
+---
+title: "Internationalization"
+description: "Learn how the framework handles multi-language support and connects with Strapi."
+---
+
+## Overview
+
+The framework provides out-of-the-box internationalization (i18n) support, fully integrated with Strapi. It relies on `next-intl` to handle server-side translations and routing, ensuring that your application is accessible in multiple languages with minimal configuration.
+
+## How It Works
+
+The i18n system operates through two main server-side components that communicate directly with your Strapi backend.
+
+### Middleware configuration
+
+The `src/middleware.ts` file acts as the entry point for every request. Its primary role is to determine the user's locale based on the URL path.
+
+1.  **Fetching Locales**: It dynamically fetches the list of available locales from Strapi (`/api/littlebox-strapi-suite/modules/locales`).
+2.  **Routing**: It checks if the current path starts with a valid locale (e.g., `/en/about`).
+3.  **Cookie Management**: If a locale is detected, it proceeds; otherwise, it assigns the default locale and sets the `NEXT_LOCALE` cookie.
+
+```typescript src/middleware.ts
+const data = await fetch(
+  `${process.env.API_BASE_URL}/api/littlebox-strapi-suite/modules/locales`,
+  // ... authentication headers
+).then((res) => res.json());
+
+// Determines the locale from the path or falls back to default
+const path = req.nextUrl.pathname.split("/");
+const pathLocale = data.locales.find((locale) => locale === path[1]);
+const locale = pathLocale || data.default;
+```
+
+### Cookie Synchronization
+
+The `NEXT_LOCALE` cookie serves as the source of truth for the user's preferred language across the session. The framework ensures your application stays in sync with this cookie through the `BaseLayout` component (`src/app/core/components/base-layout.tsx`).
+
+This component actively monitors the `NEXT_LOCALE` cookie. If it detects a change in the cookie's value (for example, after a redirection or a manual set), it automatically triggers a `router.refresh()`. This action ensures that the server-side components re-render with the correct locale data without requiring a full page reload, maintaining a smooth user experience.
+
+### Loading Translations
+
+The `src/i18n/request.ts` file is responsible for populating the translation messages for the determined locale.
+
+It automatically fetches translations from Strapi (`/api/littlebox-strapi-suite/modules/translations`), specifically requesting data for the active language. The system then maps these translations by their unique identifier (`uid`), enabling you to reference them easily in your components.
+
+## Displaying Translations
+
+Once translations are loaded, you can display them in your components using the `useTranslations` hook from `next-intl`.
+
+<Tip>
+  The framework is 100% compatible with the `next-intl` rendering system. For more advanced usage and patterns, refer to
+  the [official next-intl documentation](https://next-intl.dev/docs/usage/translations).
+</Tip>
+
+### Basic Usage
+
+1.  **Import the hook**:
+
+    ```typescript
+    import { useTranslations } from "next-intl";
+    ```
+
+2.  **Initialize the hook**: Call `useTranslations()` inside your component to get the translation function (commonly named `t`).
+
+    ```typescript
+    export default function NotFound() {
+      const t = useTranslations();
+
+      return (
+        <h1>{t("Page not found")}</h1>
+      );
+    }
+    ```
+
+    In this example, `"Page not found"` serves as the key to look up the translation. If a translation is found for the current locale, it will be displayed; otherwise, it may fall back to the key itself or the default locale's value depending on configuration.
+
+## Managing Locales Client-Side
+
+You can control language settings and navigation within your components using the `useLocale` hook. This hook exposes the `LocaleContext`, providing methods to switch languages and retrieve locale-specific data.
+
+### Using the Hook
+
+To access the locale functions, import the hook from the core context:
+
+```typescript
+import { useLocale } from "@/app/core/contexts/locale";
+```
+
+### Changing the Language
+
+Use the `set` method to change the current language. This function handles the redirection logic, sending the user to the translated version of the current page if it exists, or falling back to the target language's homepage.
+
+```typescript
+const { set } = useLocale();
+
+<button onClick={() => set('en')}>
+  Switch to English
+</button>
+```
+
+### Listening to Changes
+
+Since the language state is managed via the URL and React Context, components wrapped in the `LocaleProvider` will automatically re-render when the locale changes. You can access the current active locale via the `current` property.
+
+```typescript
+const locale = useLocale();
+useEffect(() => {
+  console.log(`Current language is: ${locale.current}`);
+}, [locale]);
+```
+
+### Getting Available Languages
+
+To retrieve the list of all active languages (e.g., to render a language switcher), use the `get` method:
+
+```typescript
+const { get } = useLocale();
+const locales = get(); // Returns ['en', 'pt', 'es', ...]
+
+return (
+  <ul>
+    {locales.map((lang) => (
+      <li key={lang}>{lang}</li>
+    ))}
+  </ul>
+);
+```
+
+### Links to Homepages
+
+If you need to programmatically link to the homepage of a specific locale, use the `getHomepageLink` method. This is crucial because of the **Home page slug strategy** configured in the backend (see the [Slug documentation](/backend/guides/slug)).
+
+The homepage URL isn't always just the locale prefix; it depends on which document is set as home and the chosen strategy (e.g., identifying by language or by content content). `getHomepageLink` abstracts this complexity, ensuring you always direct users to the correct root path for that language.
+
+```typescript
+const { getHomepageLink } = useLocale();
+
+// Navigates to the English homepage
+const goHome = () => {
+  window.location.href = getHomepageLink("en");
+};
+```
+
+
+# File: frontend/guides/seo.mdx
+
+---
+title: "SEO"
+description: "Learn how to manage SEO metadata and structured data in the frontend framework."
+---
+
+# Introduction
+
+Search Engine Optimization (SEO) improves your website's visibility on search engines. This framework provides built-in tools to manage metadata and structured data (JSON-LD) dynamically. You maintain high standards for search performance with minimal effort.
+
+## Objectives
+
+- **Automate Metadata**: Generate titles, descriptions, and Open Graph tags from your content.
+- **Implement Structured Data**: Use JSON-LD to help search engines understand your site's structure.
+- **Ensure Performance**: Keep SEO implementations lightweight and fast.
+
+# Metadata Generation
+
+Next.js uses the `generateMetadata` function to handle SEO metadata. This framework includes a utility function, `metaDataGenerator`, to streamline this process.
+
+## How it Works
+
+The `metaDataGenerator` function takes a `Page` object and a list of `Parameters` as input. It returns a `Metadata` object compliant with Next.js standards.
+
+You find this implementation in the page files:
+
+- `src/app/(pages)/[...slug]/page.tsx`.
+- `src/app/page.tsx`.
+
+```typescript
+export async function generateMetadata({ params }: { params: Promise<{ slug: string[] }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const page: Page = await getPage(slug.join("/"));
+  const parameters: Parameter[] = await getParameters();
+  return metaDataGenerator(page, parameters);
+}
+```
+
+## The Data Source
+
+The `Page` object contains an `seo` property with fields like:
+
+- `metaTitle`: The title tag.
+- `metaDescription`: The meta description.
+- `canonicalURL`: The canonical link.
+- `metaImage`: Social media preview image.
+- `structuredData`: JSON-LD data configuration.
+
+The `metaDataGenerator` maps these fields to the correct Next.js metadata properties, including Open Graph and Twitter Card settings.
+
+# Google Site Verification
+
+You can easily verify your site with Google Search Console using the global parameters system.
+
+## Configuration
+
+To add the verification tag, you simply need to [create a parameter](/backend/guides/parameters) in the Littlebox Strapi Suite with the following details:
+
+- **UID**: `google-site-verification`
+- **Value**: The verification string provided by Google (usually a long alphanumeric string).
+
+The application automatically retrieves this parameter and injects the verification metadata tag into every page.
+
+# JSON-LD and Structured Data
+
+JSON-LD (JavaScript Object Notation for Linked Data) helps search engines understand the content and context of your pages. It allows for "Rich Snippets" in search results, such as FAQs, breadcrumbs, or product details.
+
+This framework provides ready-to-use components to inject JSON-LD into your pages.
+
+## Advantages
+
+- **Better Understanding**: Search engines interpret your content type (e.g., Article, Product, FAQ) accurately.
+- **Rich Results**: Increases the chance of displaying enhanced listings in search results.
+- **Easy Integration**: You drop in a component, and the framework handles the script generation.
+
+## Available Components
+
+### BaseJsonLd
+
+The `BaseJsonLd` component handles general page structured data. It dynamically replaces placeholders like `[META_TITLE]` with actual content from the SEO fields.
+This component requires the SEO plugin to be installed in Strapi. Read the [Install Strapi SEO](/backend/installation#install-strapi-seo) section to learn how to install the plugin.
+
+**Usage:**
+This component is inserted into pages automatically, so there is no need to implement it. See the base files for the implementation:
+
+- `src/app/(pages)/[...slug]/page.tsx`.
+- `src/app/page.tsx`.
+
+```tsx
+<BaseJsonLd page={page} />
+```
+
+This component works in conjunction with the Strapi Community SEO plugin. In Strapi, when you add the SEO component in the `Content-Type Builder`, the document will now have the option to add SEO:
+
+<img style={{ borderRadius: "0.5rem" }} src="/images/add-seo-component.png" />
+
+<img style={{ borderRadius: "0.5rem" }} src="/images/add-seo-component-2.png" />
+
+In addition to standard SEO fields such as `title` and `description`, the component has another important field, `Structured Data`. This field must be filled in with [valid JSON LD](https://json-ld.org/):
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": "[META_TITLE]",
+  "description": "[META_DESCRIPTION]",
+  "url": "[CANONICAL_URL]",
+  "image": "[META_IMAGE]",
+  "location": {
+    "@type": "Place",
+    "name": "Lisbon",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "PT",
+      "addressRegion": "Lisbon",
+      "addressLocality": "Lisbon"
+    }
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "Littlebox Digital Society",
+    "url": "https://www.littlebox.pt"
+  }
+}
+```
+
+To prevent data duplication, our plugin allows four variables to be inserted into JSON LD:
+
+- `[META_TITLE]`
+- `[META_DESCRIPTION]`
+- `[CANONICAL_URL]`
+- `[META_IMAGE]`
+
+Check file `src/app/core/components/base-jsonld.tsx`, it will automatically replace these tags with values previously filled in the SEO plugin.
+
+### BaseBreadcrumbJsonLd
+
+The `BaseBreadcrumbJsonLd` component generates a `BreadcrumbList` schema. This helps search engines understand the site hierarchy and display breadcrumb navigation in search results.
+
+**Usage:**
+This component is inserted into pages automatically, so there is no need to implement it. See the base files for the implementation:
+
+- `src/app/(pages)/[...slug]/page.tsx`.
+- `src/app/page.tsx`.
+
+```tsx
+<BaseBreadcrumbJsonLd page={page} />
+```
+
+### BaseFaqsJsonLd
+
+The `BaseFaqsJsonLd` component creates an `FAQPage` schema. Use this for pages that contain a list of frequently asked questions.
+
+**Usage:**
+This component should be inserted into pages containing FAQs.
+
+```tsx
+<BaseFaqsJsonLd faqs={faqs} />
+
+// Example:
+<BaseFaqsJsonLd faqs={[
+  {
+    title: "What is your return policy?",
+    text: "Our return policy is 30 days from the date of purchase."
+  }
+]} />
+```
+
+# Summary
+
+By using `metaDataGenerator` and the provided JSON-LD components, you ensure your website uses best practices for technical SEO. You focus on creating content, and the framework handles the technical optimization for search engines.
+
+
+# File: frontend/guides/menu.mdx
+
+---
+title: "Menu"
+description: "Learn how to integrate dynamic menus from Strapi into your frontend."
+---
+
+The framework comes with a built-in module to handle menus. It connects directly to the backend API, so you don't have to manually fetch menu data.
+
+## How it works
+
+The menu system relies on two main parts: the `MenuProvider` and the `useMenu` hook.
+This system works perfectly with the Strapi menu module. When you update the menu in the Strapi admin panel, the changes reflect instantly on your frontend without changing a single line of code.
+
+<Note>
+  Check the [backend documentation](/backend/guides/menus) to learn how to create and manage menus in the admin panel.
+</Note>
+
+### MenuProvider
+
+The `MenuProvider` wraps your application and makes the menu data available everywhere. The framework automatically fetches the menu data in the `RootLayout` and passes it to this provider, so you don't need to manually handle data fetching or injection.
+
+### useMenu
+
+This hook acts as your gateway to the menu data. Use it in any component to retrieve a specific menu by its **UID**.
+
+## Usage
+
+### Get the menu
+
+First, import the hook and call it inside your component:
+
+```tsx
+import { useMenu } from "@/app/core/contexts/menu";
+
+export default function Navbar() {
+  const menu = useMenu();
+  const headerMenu = menu.get("header");
+
+  return <nav>{/* Your menu items go here */}</nav>;
+}
+```
+
+The `get` method takes the **UID** of the menu you want (e.g., `"header"`) and returns the menu object. If the menu doesn't exist, it throws an error.
+
+### Render items
+
+Once you have the menu object, you can loop through its `children` to render the links.
+
+```tsx
+<ul>
+  {headerMenu.children.map((item) => (
+    <li key={item.id}>
+      <a href={item.url} target={item.target}>
+        {item.title}
+      </a>
+    </li>
+  ))}
+</ul>
+```
+
+Each item contains properties like `url`, `title`, and `target` (e.g., `_self` or `_blank`).
+
+### Nested items
+
+If you have a dropdown or nested structure, just check if an item has children.
+
+```tsx
+{
+  item.children.length > 0 && (
+    <ul>
+      {item.children.map((subItem) => (
+        <li key={subItem.id}>
+          <a href={subItem.url}>{subItem.title}</a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+```
+
+### Metadata
+
+You can attach metadata to any menu item in the Strapi admin panel. This is useful for customizing how items look or behave on the frontend without changing the code structure.
+
+For example, you can use metadata to add a `side` key with values like `"left"` or `"right"` to split your menu.
+
+Here is how you access metadata in your code:
+
+```tsx
+{
+  headerMenu.children
+    .filter((item) => item.metadata.side === "left")
+    .map((item) => (
+      <a key={item.id} href={item.url} className={item.metadata["book-now"] ? "btn-primary" : "link"}>
+        {item.title}
+      </a>
+    ));
+}
+```
+
+This gives you full control to create dynamic, rich menus directly from the CMS.
+
+
+# File: frontend/guides/parameters.mdx
+
+---
+title: "Parameters"
+description: "Learn how to access global configuration values in your frontend application"
+---
+
+Parameters allow you to configure your application dynamically without changing the code. In this framework, parameters are automatically fetched from the backend and made available globally to all your components.
+
+## How it works
+
+The framework handles the data fetching for you. The `ParameterProvider` is already configured in your main layout, so you don't need to worry about retrieving the data from the API manually. It automatically loads all **public** parameters created in the Strapi backend.
+
+<Note>
+  Check the [backend documentation](/backend/guides/parameters) to learn how to create and manage parameters in the
+  admin panel.
+</Note>
+
+## Accessing Parameters
+
+To use a parameter in your component, you use the `useParameter` hook. This hook gives you access to the `get` function, which retrieves the value of a parameter by its unique identifier (UID).
+
+### Step 1: Import the hook
+
+First, import the `useParameter` hook from the core context.
+
+```tsx
+import { useParameter } from "@/app/core/contexts/parameter";
+```
+
+### Step 2: Retrieve the value
+
+Call the hook inside your component to get the parameter instance. Then, usage the `.get()` method with the parameter's UID to get its value.
+
+```tsx
+export default function WeatherWidget() {
+  // Access the parameter context
+  const parameter = useParameter();
+
+  // Get values by their UID
+  const latitude = parameter.get("support-lat");
+  const longitude = parameter.get("support-long");
+
+  return (
+    <div>
+      <p>Latitude: {latitude}</p>
+      <p>Longitude: {longitude}</p>
+    </div>
+  );
+}
+```
+
+<Warning>
+  The `.get()` method throws an error if the parameter with the specified UID does not exist. Ensure you use the correct
+  UID defined in your backend.
+</Warning>
+
+## Example
+
+Here is how the Weather component uses parameters to fetch location-specific weather data:
+
+```tsx
+"use client";
+
+import { useEffect, useState } from "react";
+import { useParameter } from "@/app/core/contexts/parameter";
+import { getWeather } from "@/app/components/detached/weather/actions";
+
+export default function Weather() {
+  const parameter = useParameter();
+  // ... state definitions
+
+  useEffect(() => {
+    const fetch = async () => {
+      // Retrieve coordinates dynamically
+      const latitude = parameter.get("support-lat");
+      const longitude = parameter.get("support-long");
+
+      // Use values to fetch data
+      const weather = await getWeather(latitude, longitude);
+      // ... update state
+    };
+    fetch();
+  }, []);
+
+  return (
+    // ... component JSX
+  );
+}
+```
+
+
+# File: frontend/guides/slug.mdx
+
+---
+title: "Slug"
+description: "Learn how to use slugs to connect URLs to your data."
+---
+
+The slug system links your website URLs to your content in Strapi. When you visit a page, the framework uses the slug to find the right data and show the correct template.
+
+## How It Works
+
+The slug matches the path you see in the browser. For example, if you go to `domain.com/about`, the slug is `about`. The framework takes this slug and asks Littlebox Strapi Suite for the page details.
+
+<Note>
+  Check the [backend documentation](/backend/guides/slug) to learn how to create and manage slugs in the admin panel.
+</Note>
+
+### Dynamic Routing
+
+The file `src/app/(pages)/[...slug]/page.tsx` handles these requests. It acts as the main entry point for your dynamic pages. Here is what it does:
+
+1.  **Gets the Slug**: It reads the slug from the URL.
+2.  **Gets Data**: It fetches the page content from Strapi using the `getPage` function.
+3.  **Shows the Page**: It loads and displays the template that matches with [page attributes](/frontend/guides/attributes#template).
+
+## Templates
+
+The `template` field in Littlebox Strapi Suite tells the framework how to display the page. The system looks for a matching folder in `src/app/templates`.
+
+For a template named `home`, the system loads:
+
+- **Logic**: `src/app/templates/home/content.ts` runs a strategy function. You use this to handle data before the page loads.
+- **View**: The default export (often `index.tsx`) inside the folder shows the visual part of the page.
+
+<Warning>
+  Ensure the template name in Strapi matches the folder name in `src/app/templates`. If they do not match, the page
+  handles the error gracefully but may not show what you expect.
+</Warning>
+
+## SEO and Metadata
+
+The framework handles SEO for you automatically. It uses `generateMetadata` to fetch the page data and create the necessary HTML tags.
+
+It also adds structured data (JSON-LD) to help search engines understand your site:
+
+- **Breadcrumbs**: Shows the path to the current page.
+- **Base JSON-LD**: details about the page structure.
+
+## Data Fetching
+
+The `getPage` function handles the connection to the API. It uses a cache to make your site faster.
+
+```typescript
+const getPage = cache(async (slug: string) => {
+  const page = await fetch(
+    `${process.env.API_BASE_URL}/api/littlebox-strapi-suite/modules/pages?slug=${slug}&properties=attributes`,
+    headers,
+  );
+  return page.json();
+});
+```
+
+If the system cannot find a page for the slug, it shows a 404 "Not Found" page.
+
+
+# File: frontend/guides/templates.mdx
+
+---
+title: "Templates"
+description: "Learn how to use templates to control page structure and data."
+---
+
+The template system connects your backend structure to the frontend layout. It allows you to define different rendering strategies for different types of pages.
+
+When you assign a template to a page in Littlebox Strapi Suite, the framework looks for a matching folder in `app/templates` and renders its `index.tsx` file.
+
+<Note>
+  Check the [backend documentation](/backend/guides/page-attributes#template) to learn how to create and manage
+  templates in the admin panel.
+</Note>
+
+## The Default Template
+
+The `default` template is the most versatile option. Instead of enforcing a fixed layout, it dynamically renders the blocks (components) defined in your Strapi content.
+
+You typically use this template for landing pages, about pages, or any page constructed from flexible content blocks.
+
+### How It Works
+
+Open `app/templates/default/index.tsx` to see the implementation. The component receives a `page` prop containing all the data from Strapi. It iterates over the `blocks` array and renders the specific component for each block type.
+
+```tsx
+import { Page } from "@/app/core/types";
+// Import block components...
+
+interface Props {
+  page: Page;
+}
+
+export default function Default({ page }: Props) {
+  return (
+    <div>
+      {page.document.blocks.map((block: any, index: number) => (
+        <Fragment key={index}>
+          {block.__component === "header.header-main" && <HeaderMain data={block} />}
+          {block.__component === "blocks.hero" && <Hero data={block} />}
+          {/* Additional block mappings */}
+        </Fragment>
+      ))}
+    </div>
+  );
+}
+```
+
+This structure allows content editors to build pages freely by stacking blocks, without needing a developer to create a new page layout for every variation.
+
+The code above is not part of the framework core. It is only an example.
+Avoid creating many templates. Instead, break the site into components and use Strapi [dynamic zones](https://docs.strapi.io/cms/features/content-type-builder#dynamiczones) together with [components](https://docs.strapi.io/cms/features/content-type-builder#components) to build pages.
+In the default template, iterate over the blocks and map them to their corresponding React components.
+This approach lets you create independent blocks that you can add, remove, or reorder directly in Strapi, without writing frontend code. It also gives content managers the freedom to create new pages by reusing existing components.
+
+## Content Injection
+
+You often need to include data that doesn't come directly from the page's main fields in Strapi. The framework solves this with **Content Injection**.
+
+You perform content injection using a `content.ts` file located within your specific template folder (e.g., `app/templates/default/content.ts`).
+
+### Purpose
+
+Use content injection to:
+
+- **Fetch External Data**: Load data from third-party APIs or other services.
+- **Compute Values**: Calculate values server-side before the page renders.
+- **Enrich the Page Object**: Add extra properties to the `page` object that your components need.
+
+### How to Use
+
+Create a `content.ts` file in your template directory. Export a default asynchronous function that receives the `Page` object. Any changes you make to this object persist when the framework passes it to your template component.
+
+```typescript
+import { Page } from "@/app/core/types";
+
+export default async function (page: Page): Promise<void> {
+  // Inject a custom value
+  page.document.serverTime = new Date().toISOString();
+
+  // Fetch external data
+  const res = await fetch("https://api.example.com/data");
+  const externalData = await res.json();
+
+  // Attach data to the document to use in index.tsx
+  page.document.externalData = externalData;
+}
+```
+
+The framework runs this function on the server before rendering the page, ensuring your data is ready when the component loads.
+
+
+# File: hosting/plans.mdx
+
+---
+title: "Managed Hosting"
+sidebarTitle: "Plans"
+description: "Premium Strapi and NextJS hosting for your business."
+---
+
+Focus on your product. We handle the infrastructure. Get a robust, scalable, and secure environment for your Strapi and NextJS applications.
+
+## The Standard Plan
+
+Get everything you need for **$15 per month**.
+Pay annually and save **10%**.
+
+### What You Get
+
+<CardGroup cols={2}>
+  <Card title="Storage & Bandwidth" icon="hard-drive">
+    You get **10GB of storage** and **10GB of bandwidth**. Your content scales with you.
+  </Card>
+  <Card title="Environments" icon="layer-group">
+    You receive **2 environments**: Production and Staging. Test safely before you go live.
+  </Card>
+  <Card title="Database" icon="database">
+    We include a managed **MySQL database**. Your data stays secure and accessible.
+  </Card>
+  <Card title="Daily Backups" icon="rotate">
+    We perform **daily backups** of your database and files. We retain them for 15 days.
+  </Card>
+  <Card title="Compute Power" icon="microchip">
+    You have **1 CPU** and **2GB of RAM**. Guaranteed performance.
+  </Card>
+</CardGroup>
+
+### Zero Configuration
+
+Connect your **GIT repository**. That is all you do. We handle the rest.
+
+- **Frontend Included**: We host your NextJS frontend on Vercel. This is included in the price.
+- **Custom Domain**: You connect your own domain name.
+
+<Tip>
+**Ready to Start?**
+
+Contact us at **tools@littlebox.pt** to subscribe to this plan today.
+
+</Tip>
+
+
+# File: customizations.mdx
+
+---
+title: Customizations
+description: Learn how to customize the platform to fit your needs.
+---
+
+## Open Source and Full Control
+
+Littlebox Strapi Suite is 100% open source. You have full access to the code. The frontend works like a mini-framework to help you integrate faster, but it does not limit you. You do not install it as a package. Instead, you clone the repository. This gives you the freedom to modify anything you need.
+
+You own the code. Feel free to change any part of it to match your project's goals. If you have an idea to improve the platform, or if you make a change that could help others, please let us know. We welcome your suggestions and contributions. Visit our [Contributing](/contributing) page to see how you can help.
+
+## Littlebox Consultancy Services
+
+Do you need a strategic website but want to avoid the technical details? Littlebox offers consultancy services to help you. We handle the process for you.
+
+- **Design:** We create the look and feel of your site.
+- **Programming:** We build the features you need.
+- **Support:** We help you manage the platform.
+
+We take care of the heavy lifting so you can focus on your business.
+
+<Tip>
+**Ready to get started?**
+
+Contact us at **tools@littlebox.pt** today and discover how powerful strategies become real
+sales.
+
+</Tip>
+
