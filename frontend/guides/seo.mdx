@@ -47,6 +47,19 @@ The `Page` object contains an `seo` property with fields like:
 
 The `metaDataGenerator` maps these fields to the correct Next.js metadata properties, including Open Graph and Twitter Card settings.
 
+# Google Site Verification
+
+You can easily verify your site with Google Search Console using the global parameters system.
+
+## Configuration
+
+To add the verification tag, you simply need to [create a parameter](/backend/guides/parameters) in the Littlebox Strapi Suite with the following details:
+
+- **UID**: `google-site-verification`
+- **Value**: The verification string provided by Google (usually a long alphanumeric string).
+
+The application automatically retrieves this parameter and injects the verification metadata tag into every page.
+
 # JSON-LD and Structured Data
 
 JSON-LD (JavaScript Object Notation for Linked Data) helps search engines understand the content and context of your pages. It allows for "Rich Snippets" in search results, such as FAQs, breadcrumbs, or product details.
