@@ -1,8 +1,89 @@
 ---
-title: 'Templates'
-description: 'Section under development. It will be completed soon'
+title: "Templates"
+description: "Learn how to use templates to control page structure and data."
 ---
 
+The template system connects your backend structure to the frontend layout. It allows you to define different rendering strategies for different types of pages.
+
+When you assign a template to a page in Littlebox Strapi Suite, the framework looks for a matching folder in `app/templates` and renders its `index.tsx` file.
+
 <Note>
-  Section under development. It will be completed soon.
+  Check the [backend documentation](/backend/guides/page-attributes#template) to learn how to create and manage
+  templates in the admin panel.
 </Note>
+
+## The Default Template
+
+The `default` template is the most versatile option. Instead of enforcing a fixed layout, it dynamically renders the blocks (components) defined in your Strapi content.
+
+You typically use this template for landing pages, about pages, or any page constructed from flexible content blocks.
+
+### How It Works
+
+Open `app/templates/default/index.tsx` to see the implementation. The component receives a `page` prop containing all the data from Strapi. It iterates over the `blocks` array and renders the specific component for each block type.
+
+```tsx
+import { Page } from "@/app/core/types";
+// Import block components...
+
+interface Props {
+  page: Page;
+}
+
+export default function Default({ page }: Props) {
+  return (
+    <div>
+      {page.document.blocks.map((block: any, index: number) => (
+        <Fragment key={index}>
+          {block.__component === "header.header-main" && <HeaderMain data={block} />}
+          {block.__component === "blocks.hero" && <Hero data={block} />}
+          {/* Additional block mappings */}
+        </Fragment>
+      ))}
+    </div>
+  );
+}
+```
+
+This structure allows content editors to build pages freely by stacking blocks, without needing a developer to create a new page layout for every variation.
+
+The code above is not part of the framework core. It is only an example.
+Avoid creating many templates. Instead, break the site into components and use Strapi [dynamic zones](https://docs.strapi.io/cms/features/content-type-builder#dynamiczones) together with [components](https://docs.strapi.io/cms/features/content-type-builder#components) to build pages.
+In the default template, iterate over the blocks and map them to their corresponding React components.
+This approach lets you create independent blocks that you can add, remove, or reorder directly in Strapi, without writing frontend code. It also gives content managers the freedom to create new pages by reusing existing components.
+
+## Content Injection
+
+You often need to include data that doesn't come directly from the page's main fields in Strapi. The framework solves this with **Content Injection**.
+
+You perform content injection using a `content.ts` file located within your specific template folder (e.g., `app/templates/default/content.ts`).
+
+### Purpose
+
+Use content injection to:
+
+- **Fetch External Data**: Load data from third-party APIs or other services.
+- **Compute Values**: Calculate values server-side before the page renders.
+- **Enrich the Page Object**: Add extra properties to the `page` object that your components need.
+
+### How to Use
+
+Create a `content.ts` file in your template directory. Export a default asynchronous function that receives the `Page` object. Any changes you make to this object persist when the framework passes it to your template component.
+
+```typescript
+import { Page } from "@/app/core/types";
+
+export default async function (page: Page): Promise<void> {
+  // Inject a custom value
+  page.document.serverTime = new Date().toISOString();
+
+  // Fetch external data
+  const res = await fetch("https://api.example.com/data");
+  const externalData = await res.json();
+
+  // Attach data to the document to use in index.tsx
+  page.document.externalData = externalData;
+}
+```
+
+The framework runs this function on the server before rendering the page, ensuring your data is ready when the component loads.
