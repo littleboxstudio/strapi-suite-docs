@@ -1,8 +1,61 @@
 ---
-title: 'Slug'
-description: 'Section under development. It will be completed soon'
+title: "Slug"
+description: "Learn how to use slugs to connect URLs to your data."
 ---
 
+The slug system links your website URLs to your content in Strapi. When you visit a page, the framework uses the slug to find the right data and show the correct template.
+
+## How It Works
+
+The slug matches the path you see in the browser. For example, if you go to `domain.com/about`, the slug is `about`. The framework takes this slug and asks Littlebox Strapi Suite for the page details.
+
 <Note>
-  Section under development. It will be completed soon.
+  Check the [backend documentation](/backend/guides/slug) to learn how to create and manage slugs in the admin panel.
 </Note>
+
+### Dynamic Routing
+
+The file `src/app/(pages)/[...slug]/page.tsx` handles these requests. It acts as the main entry point for your dynamic pages. Here is what it does:
+
+1.  **Gets the Slug**: It reads the slug from the URL.
+2.  **Gets Data**: It fetches the page content from Strapi using the `getPage` function.
+3.  **Shows the Page**: It loads and displays the template that matches with [page attributes](/frontend/guides/attributes#template).
+
+## Templates
+
+The `template` field in Littlebox Strapi Suite tells the framework how to display the page. The system looks for a matching folder in `src/app/templates`.
+
+For a template named `home`, the system loads:
+
+- **Logic**: `src/app/templates/home/content.ts` runs a strategy function. You use this to handle data before the page loads.
+- **View**: The default export (often `index.tsx`) inside the folder shows the visual part of the page.
+
+<Warning>
+  Ensure the template name in Strapi matches the folder name in `src/app/templates`. If they do not match, the page
+  handles the error gracefully but may not show what you expect.
+</Warning>
+
+## SEO and Metadata
+
+The framework handles SEO for you automatically. It uses `generateMetadata` to fetch the page data and create the necessary HTML tags.
+
+It also adds structured data (JSON-LD) to help search engines understand your site:
+
+- **Breadcrumbs**: Shows the path to the current page.
+- **Base JSON-LD**: details about the page structure.
+
+## Data Fetching
+
+The `getPage` function handles the connection to the API. It uses a cache to make your site faster.
+
+```typescript
+const getPage = cache(async (slug: string) => {
+  const page = await fetch(
+    `${process.env.API_BASE_URL}/api/littlebox-strapi-suite/modules/pages?slug=${slug}&properties=attributes`,
+    headers,
+  );
+  return page.json();
+});
+```
+
+If the system cannot find a page for the slug, it shows a 404 "Not Found" page.
