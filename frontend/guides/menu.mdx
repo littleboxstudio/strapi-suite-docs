@@ -1,8 +1,100 @@
 ---
-title: 'Menu'
-description: 'Section under development. It will be completed soon'
+title: "Menu"
+description: "Learn how to integrate dynamic menus from Strapi into your frontend."
 ---
 
+The framework comes with a built-in module to handle menus. It connects directly to the backend API, so you don't have to manually fetch menu data.
+
+## How it works
+
+The menu system relies on two main parts: the `MenuProvider` and the `useMenu` hook.
+This system works perfectly with the Strapi menu module. When you update the menu in the Strapi admin panel, the changes reflect instantly on your frontend without changing a single line of code.
+
 <Note>
-  Section under development. It will be completed soon.
+  Check the [backend documentation](/backend/guides/menus) to learn how to create and manage menus in the admin panel.
 </Note>
+
+### MenuProvider
+
+The `MenuProvider` wraps your application and makes the menu data available everywhere. The framework automatically fetches the menu data in the `RootLayout` and passes it to this provider, so you don't need to manually handle data fetching or injection.
+
+### useMenu
+
+This hook acts as your gateway to the menu data. Use it in any component to retrieve a specific menu by its **UID**.
+
+## Usage
+
+### Get the menu
+
+First, import the hook and call it inside your component:
+
+```tsx
+import { useMenu } from "@/app/core/contexts/menu";
+
+export default function Navbar() {
+  const menu = useMenu();
+  const headerMenu = menu.get("header");
+
+  return <nav>{/* Your menu items go here */}</nav>;
+}
+```
+
+The `get` method takes the **UID** of the menu you want (e.g., `"header"`) and returns the menu object. If the menu doesn't exist, it throws an error.
+
+### Render items
+
+Once you have the menu object, you can loop through its `children` to render the links.
+
+```tsx
+<ul>
+  {headerMenu.children.map((item) => (
+    <li key={item.id}>
+      <a href={item.url} target={item.target}>
+        {item.title}
+      </a>
+    </li>
+  ))}
+</ul>
+```
+
+Each item contains properties like `url`, `title`, and `target` (e.g., `_self` or `_blank`).
+
+### Nested items
+
+If you have a dropdown or nested structure, just check if an item has children.
+
+```tsx
+{
+  item.children.length > 0 && (
+    <ul>
+      {item.children.map((subItem) => (
+        <li key={subItem.id}>
+          <a href={subItem.url}>{subItem.title}</a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+```
+
+### Metadata
+
+You can attach metadata to any menu item in the Strapi admin panel. This is useful for customizing how items look or behave on the frontend without changing the code structure.
+
+For example, you can use metadata to add a `side` key with values like `"left"` or `"right"` to split your menu.
+
+Here is how you access metadata in your code:
+
+```tsx
+{
+  headerMenu.children
+    .filter((item) => item.metadata.side === "left")
+    .map((item) => (
+      <a key={item.id} href={item.url} className={item.metadata["book-now"] ? "btn-primary" : "link"}>
+        {item.title}
+      </a>
+    ));
+}
+```
+
+This gives you full control to create dynamic, rich menus directly from the CMS.
