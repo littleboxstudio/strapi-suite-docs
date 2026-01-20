@@ -1,0 +1,43 @@
+# Littlebox Strapi Suite
+
+> Optimize your docs for LLMs to read and index.
+
+## Overview
+- [Before Starting](before-starting.mdx) - Welcome to the Littlebox Strapi Suite documentation.
+- [Community Support](community-support.mdx) - Community support and resources.
+- [Contributing](contributing.mdx) - Help us improve and continue to offer quality products to the community!
+- [License](license.mdx) - MIT License information.
+- [Repositories](repositories.mdx) - Official repositories list.
+
+## Backend
+### Get Started
+- [Introduction](backend/introduction.mdx) - Welcome to the backend documentation.
+- [Installation](backend/installation.mdx) - Learn how to install the Littlebox Strapi Suite Plugin.
+### Guides
+- [Menus](backend/guides/menus.mdx) - Learn how to create dynamic menus and connect them to the frontend using the API.
+- [Page Attributes](backend/guides/page-attributes.mdx) - Learn how to use a page's attributes.
+- [Parameters](backend/guides/parameters.mdx) - Learn how to create parameters and connect them to the frontend using the API.
+- [Sitemap](backend/guides/sitemap.mdx) - Learn how to manage sitemaps.
+- [Slug](backend/guides/slug.mdx) - Learn how to create slugs and connect them to the frontend using the API.
+- [Translations](backend/guides/translations.mdx) - Learn how to create translations and connect them to the frontend using the API.
+
+## Frontend
+### Get Started
+- [Introduction](frontend/introduction.mdx) - Welcome to the Littlebox Strapi Suite Frontend documentation.
+- [Installation](frontend/installation.mdx) - Learn how to install the Littlebox Strapi Suite Frontend.
+### Guides
+- [Essentials](frontend/guides/essentials.mdx) - Understand the core structure and essential files of the frontend framework.
+- [Attributes](frontend/guides/attributes.mdx) - Learn how to use attributes to configure your pages.
+- [Cache](frontend/guides/cache.mdx) - Learn how the framework uses caching to optimize performance.
+- [Internationalization](frontend/guides/internationalization.mdx) - Learn how the framework handles multi-language support and connects with Strapi.
+- [SEO](frontend/guides/seo.mdx) - Learn how to manage SEO metadata and structured data in the frontend framework.
+- [Menu](frontend/guides/menu.mdx) - Learn how to integrate dynamic menus from Strapi into your frontend.
+- [Parameters](frontend/guides/parameters.mdx) - Learn how to access global configuration values in your frontend application.
+- [Slug](frontend/guides/slug.mdx) - Learn how to use slugs to connect URLs to your data.
+- [Templates](frontend/guides/templates.mdx) - Learn how to use templates to control page structure and data.
+
+## Hosting
+- [Plans](hosting/plans.mdx) - Premium Strapi and NextJS hosting for your business.
+
+## Customizations
+- [Customizations](customizations.mdx) - Learn how to customize the platform to fit your needs.
