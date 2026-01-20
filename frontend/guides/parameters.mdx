@@ -1,8 +1,88 @@
 ---
-title: 'Parameters'
-description: 'Section under development. It will be completed soon'
+title: "Parameters"
+description: "Learn how to access global configuration values in your frontend application"
 ---
 
+Parameters allow you to configure your application dynamically without changing the code. In this framework, parameters are automatically fetched from the backend and made available globally to all your components.
+
+## How it works
+
+The framework handles the data fetching for you. The `ParameterProvider` is already configured in your main layout, so you don't need to worry about retrieving the data from the API manually. It automatically loads all **public** parameters created in the Strapi backend.
+
 <Note>
-  Section under development. It will be completed soon.
+  Check the [backend documentation](/backend/guides/parameters) to learn how to create and manage parameters in the
+  admin panel.
 </Note>
+
+## Accessing Parameters
+
+To use a parameter in your component, you use the `useParameter` hook. This hook gives you access to the `get` function, which retrieves the value of a parameter by its unique identifier (UID).
+
+### Step 1: Import the hook
+
+First, import the `useParameter` hook from the core context.
+
+```tsx
+import { useParameter } from "@/app/core/contexts/parameter";
+```
+
+### Step 2: Retrieve the value
+
+Call the hook inside your component to get the parameter instance. Then, usage the `.get()` method with the parameter's UID to get its value.
+
+```tsx
+export default function WeatherWidget() {
+  // Access the parameter context
+  const parameter = useParameter();
+
+  // Get values by their UID
+  const latitude = parameter.get("support-lat");
+  const longitude = parameter.get("support-long");
+
+  return (
+    <div>
+      <p>Latitude: {latitude}</p>
+      <p>Longitude: {longitude}</p>
+    </div>
+  );
+}
+```
+
+<Warning>
+  The `.get()` method throws an error if the parameter with the specified UID does not exist. Ensure you use the correct
+  UID defined in your backend.
+</Warning>
+
+## Example
+
+Here is how the Weather component uses parameters to fetch location-specific weather data:
+
+```tsx
+"use client";
+
+import { useEffect, useState } from "react";
+import { useParameter } from "@/app/core/contexts/parameter";
+import { getWeather } from "@/app/components/detached/weather/actions";
+
+export default function Weather() {
+  const parameter = useParameter();
+  // ... state definitions
+
+  useEffect(() => {
+    const fetch = async () => {
+      // Retrieve coordinates dynamically
+      const latitude = parameter.get("support-lat");
+      const longitude = parameter.get("support-long");
+
+      // Use values to fetch data
+      const weather = await getWeather(latitude, longitude);
+      // ... update state
+    };
+    fetch();
+  }, []);
+
+  return (
+    // ... component JSX
+  );
+}
+```
