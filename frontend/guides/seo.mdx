@@ -6,8 +6,9 @@ description: "Learn how to manage SEO metadata and structured data in the fronte
 # Introduction
 
 Search Engine Optimization (SEO) improves your website's visibility on search engines. This framework provides built-in tools to manage metadata and structured data (JSON-LD) dynamically. You maintain high standards for search performance with minimal effort.
+You focus on creating content, and the framework handles the technical optimization for search engines.
 
-## Objectives
+# Objectives
 
 - **Automate Metadata**: Generate titles, descriptions, and Open Graph tags from your content.
 - **Implement Structured Data**: Use JSON-LD to help search engines understand your site's structure.
@@ -17,7 +18,7 @@ Search Engine Optimization (SEO) improves your website's visibility on search en
 
 Next.js uses the `generateMetadata` function to handle SEO metadata. This framework includes a utility function, `metaDataGenerator`, to streamline this process.
 
-## How it Works
+### How it Works
 
 The `metaDataGenerator` function takes a `Page` object and a list of `Parameters` as input. It returns a `Metadata` object compliant with Next.js standards.
 
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 ```
 
-## The Data Source
+### The Data Source
 
 The `Page` object contains an `seo` property with fields like:
 
@@ -51,8 +52,6 @@ The `metaDataGenerator` maps these fields to the correct Next.js metadata proper
 
 You can easily verify your site with Google Search Console using the global parameters system.
 
-## Configuration
-
 To add the verification tag, you simply need to [create a parameter](/backend/guides/parameters) in the Littlebox Strapi Suite with the following details:
 
 - **UID**: `google-site-verification`
@@ -60,21 +59,32 @@ To add the verification tag, you simply need to [create a parameter](/backend/gu
 
 The application automatically retrieves this parameter and injects the verification metadata tag into every page.
 
+# Google Analytics
+
+You can easily integrate Google Analytics into your application using the global parameters system.
+
+To add the tracking ID, you simply need to [create a parameter](/backend/guides/parameters) in the Littlebox Strapi Suite with the following details:
+
+- **UID**: `google-analytics-id`
+- **Value**: Your Google Analytics tracking ID (usually starting with `G-`).
+
+The application automatically retrieves this parameter and activates the Google Analytics script on every page.
+
 # JSON-LD and Structured Data
 
 JSON-LD (JavaScript Object Notation for Linked Data) helps search engines understand the content and context of your pages. It allows for "Rich Snippets" in search results, such as FAQs, breadcrumbs, or product details.
 
 This framework provides ready-to-use components to inject JSON-LD into your pages.
 
-## Advantages
+### Advantages
 
 - **Better Understanding**: Search engines interpret your content type (e.g., Article, Product, FAQ) accurately.
 - **Rich Results**: Increases the chance of displaying enhanced listings in search results.
 - **Easy Integration**: You drop in a component, and the framework handles the script generation.
 
-## Available Components
+### Available Components
 
-### BaseJsonLd
+#### BaseJsonLd
 
 The `BaseJsonLd` component handles general page structured data. It dynamically replaces placeholders like `[META_TITLE]` with actual content from the SEO fields.
 This component requires the SEO plugin to be installed in Strapi. Read the [Install Strapi SEO](/backend/installation#install-strapi-seo) section to learn how to install the plugin.
@@ -132,7 +142,7 @@ To prevent data duplication, our plugin allows four variables to be inserted int
 
 Check file `src/app/core/components/base-jsonld.tsx`, it will automatically replace these tags with values previously filled in the SEO plugin.
 
-### BaseBreadcrumbJsonLd
+#### BaseBreadcrumbJsonLd
 
 The `BaseBreadcrumbJsonLd` component generates a `BreadcrumbList` schema. This helps search engines understand the site hierarchy and display breadcrumb navigation in search results.
 
@@ -146,7 +156,7 @@ This component is inserted into pages automatically, so there is no need to impl
 <BaseBreadcrumbJsonLd page={page} />
 ```
 
-### BaseFaqsJsonLd
+#### BaseFaqsJsonLd
 
 The `BaseFaqsJsonLd` component creates an `FAQPage` schema. Use this for pages that contain a list of frequently asked questions.
 
@@ -164,7 +174,3 @@ This component should be inserted into pages containing FAQs.
   }
 ]} />
 ```
-
-# Summary
-
-By using `metaDataGenerator` and the provided JSON-LD components, you ensure your website uses best practices for technical SEO. You focus on creating content, and the framework handles the technical optimization for search engines.
