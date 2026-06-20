@@ -91,7 +91,7 @@ For dynamic routes, the framework internally uses `generateStaticParams` to iden
 
 ```typescript app/(pages)/[...slug]/page.tsx
 export async function generateStaticParams() {
-  const pages: Pages[] = await fetch(
+  const pages: Document[] = await fetch(
     `${process.env.API_BASE_URL}/api/littlebox-strapi-suite/modules/pages`,
     headers,
   ).then((res) => res.json());
